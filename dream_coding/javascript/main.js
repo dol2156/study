@@ -1,1 +1,1 @@
-ksmc
+console.log("Hello World");
