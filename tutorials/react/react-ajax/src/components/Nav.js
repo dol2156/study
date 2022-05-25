@@ -28,7 +28,9 @@ class Nav extends Component {
       <nav className="Nav">
         <ul>
           {this.state.list.map((item) => (
-            <li key={item.id}><a href='/'>{item.title}</a></li>
+            <li key={item.id}>
+              <a href='/'>{item.title}</a>
+            </li>
           ))}
         </ul>
       </nav>
