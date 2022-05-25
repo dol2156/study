@@ -1,19 +1,21 @@
-import React, {Component} from "react";
+import React, { Component } from "react";
 
 class Toc extends Component {
   render() {
+    let lists = [];
+    let data = this.props.data;
+    let i = 0;
+    while (i < data.length) {
+      lists.push(<li key={data[i].id}><a href="1.html">{data[i].title}</a></li>);
+      i++;
+    }
+    console.log(lists);
+
+
     return (
       <nav className="Toc" data-cpnt="Toc">
         <ul>
-          <li>
-            <a href="1.html">HTML</a>
-          </li>
-          <li>
-            <a href="2.html">CSS</a>
-          </li>
-          <li>
-            <a href="3.html">Javascript</a>
-          </li>
+          {lists}
         </ul>
       </nav>
     )
