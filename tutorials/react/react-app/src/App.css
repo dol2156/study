@@ -1,3 +1,9 @@
 [data-cpnt] {
   outline: 1px dashed red;
 }
+.btns > button + button {
+  margin-left: 10px;
+}
+button {
+  cursor: pointer;
+}

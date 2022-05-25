@@ -6,11 +6,20 @@ class Toc extends Component {
     let data = this.props.data;
     let i = 0;
     while (i < data.length) {
-      lists.push(<li key={data[i].id}><a href="1.html">{data[i].title}</a></li>);
+      lists.push(
+        <li key={data[i].id}>
+          <a
+            href="/"
+            data-idx={i}
+            onClick={(evt) => {
+              evt.preventDefault();
+              let idx = Number(evt.target.dataset.idx);
+              this.props.onChangePage(idx);
+            }}
+          >{data[i].title}</a>
+        </li>);
       i++;
     }
-    console.log(lists);
-
 
     return (
       <nav className="Toc" data-cpnt="Toc">
