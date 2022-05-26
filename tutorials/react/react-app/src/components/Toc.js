@@ -1,7 +1,7 @@
-import React, { Component } from "react";
+import React, {Component} from "react";
 
 class Toc extends Component {
-
+  
   render() {
     let lists = [];
     let data = this.props.data;
@@ -21,11 +21,23 @@ class Toc extends Component {
         </li>);
       i++;
     }
-
+    
     return (
       <nav className="Toc" data-cpnt="Toc">
         <ul>
-          {lists}
+          {data.map((_obj, _idx) => (
+            <li key={_idx}>
+              <a
+                href="/"
+                data-idx={_idx}
+                onClick={(evt) => {
+                  evt.preventDefault();
+                  let idx = Number(evt.target.dataset.idx);
+                  this.props.onChangePage(idx);
+                }}
+              >{_obj.title}</a>
+            </li>
+          ))}
         </ul>
       </nav>
     )
