@@ -12,8 +12,8 @@ class App extends Component {
     // constructor => 컴포넌트가 실행될때 render 함수 실행전에 초기화 해야 할 부분을 작성한다.
     super(props);
     this.state = {
-      mode : "read",
-      selected_nav_data_id : 1,
+      mode : "welcome",
+      selected_nav_data_id : null,
       header_data : {
         title : "WEB",
         sub : "World Wide Web!",
@@ -34,27 +34,90 @@ class App extends Component {
     let _id = Number(this.state.selected_nav_data_id);
     let _nav_data = Array.from(this.state.nav_data);
     
-    if (_mode === 'welcome') {
-      _cpnt_content = <WelComeContent></WelComeContent>;
-    } else {
+    if (_mode === 'read') {
       var _result = _nav_data.find((item) => {
         if (item.id === _id) {
           return true;
         }
       });
       _cpnt_content = <Content data={_result}></Content>;
+    } else {
+      _cpnt_content = <WelComeContent></WelComeContent>;
     }
     
     return _cpnt_content;
   }
   
-  changeMode(mode, id) {
+  changeMode(mode, id = this.state.selected_nav_data_id) {
+    
     this.setState({
       mode : mode,
       selected_nav_data_id : id
     })
+    
   }
   
+  visibleControl() {
+    let _cpnt_control = null;
+    let _mode = this.state.mode;
+    
+    if (_mode === "read") {
+      _cpnt_control =
+        <Control
+          fnChangeMode={this.changeMode}
+        ></Control>;
+    }
+    return _cpnt_control;
+    
+  }
+  
+  visibleForm() {
+    let _cpnt_form, _selected_obj = null;
+    let _mode = this.state.mode;
+    
+    if (_mode === "create" || _mode === "update") {
+      _cpnt_form =
+        <Form
+          parent={this}
+          fnCreateSubmit={(title, desc) => {
+            let _nav_data = Array.from(this.state.nav_data);
+            let _new_id = _nav_data.length + 1;
+            
+            let _new_obj = {
+              id : _new_id,
+              title : title,
+              desc : desc
+            };
+            _nav_data.push(_new_obj);
+            
+            this.setState({
+              mode : "welcome",
+              nav_data : _nav_data
+            });
+          }}
+          fnUpdateSubmit={(title, desc) => {
+            const _selected_id = Number(this.state.selected_nav_data_id);
+            const _nav_data = Array.from(this.state.nav_data);
+            
+            let len_i = _nav_data.length;
+            for (let i = 0; i < len_i; i++) {
+              let _item = _nav_data[i];
+              if (_item.id === _selected_id) {
+                _item.title = title;
+                _item.desc = desc;
+                break;
+              }
+            }
+            
+            this.setState({
+              nav_data : _nav_data
+            })
+          }}
+        >
+        </Form>;
+    }
+    return _cpnt_form;
+  }
   
   render() {
     let _content = this.getContent();
@@ -70,8 +133,8 @@ class App extends Component {
           fnChangeMode={this.changeMode}
         ></Nav>
         {_content}
-        <Control></Control>
-        <Form></Form>
+        {this.visibleControl()}
+        {this.visibleForm()}
       </div>
     )
   }

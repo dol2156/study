@@ -10,9 +10,30 @@ class Control extends Component {
   render() {
     return (
       <article className="Control" data-cpnt="Control">
-        <div><button type="button">CREATE</button></div>
-        <div><button type="button">UPDATE</button></div>
-        <div><button type="button">DELETE</button></div>
+        <div>
+          <button
+            type="button"
+            onClick={(e) => {
+              this.props.fnChangeMode("create");
+            }}
+          >CREATE</button>
+        </div>
+        <div>
+          <button
+            type="button"
+            onClick={(e) => {
+              this.props.fnChangeMode("update");
+            }}
+          >UPDATE</button>
+        </div>
+        <div>
+          <button
+            type="button"
+            onClick={(e) => {
+              this.props.fnChangeMode("delete");
+            }}
+          >DELETE</button>
+        </div>
       </article>
     )
   }
