@@ -1,0 +1,7 @@
+*{ margin:0; padding:0; }
+body{ padding:20px; }
+li{ list-style:none; }
+button{ cursor:pointer; }
+[data-cpnt]{ outline:1px dashed red; box-shadow:0px 0px 10px cornflowerblue; }
+[data-cpnt]{ padding:10px; }
+[data-cpnt] + [data-cpnt]{ margin-top:10px; }
