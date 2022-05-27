@@ -1,4 +1,4 @@
-const JsonUtil = {};
+window.JsonUtil = {};
 
 /**
  * 배열 깊은 복사
