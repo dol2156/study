@@ -2,6 +2,7 @@ import React, {Component} from "react";
 
 class Header extends Component {
   constructor(props) {
+    // constructor => 컴포넌트가 실행될때 render 함수 실행전에 초기화 해야 할 부분을 작성한다.
     super(props);
     this.state = {}
   }
@@ -14,13 +15,11 @@ class Header extends Component {
             href="/"
             onClick={(e) => {
               e.preventDefault();
-              this.props.fnChangeMode("welcome", null);
+              this.props.fnChangeMode();
             }}
-          >
-            {this.props.data.title}
-          </a>
+          >WEB</a>
         </h1>
-        {this.props.data.sub}
+        World Wide Web!
       </header>
     )
   }
