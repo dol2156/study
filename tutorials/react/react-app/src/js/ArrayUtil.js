@@ -1,8 +1,6 @@
-import ContentNormal from "../components/ContentNormal";
 /**
  * 배열의 불변(Immutable) 이슈로 인해 무조건 원본 배열을 복사해서 반환하는 유틸이 필요했다.
  */
-const ArrayUtil = {};
 
 /**
  * 배열 요소 거꾸로
@@ -10,16 +8,10 @@ const ArrayUtil = {};
  * @param {*} array 원본 배열
  * @returns Array
  */
-ArrayUtil.reverse = (array) => {
-  let _array_copy = Array.from(array);
-  return _array_copy.reverse();
-}
-
 export const reverse = (array) => {
   let _array_copy = Array.from(array);
   return _array_copy.reverse();
 }
-
 
 /**
  * start_idx 에서 부터 cut_cnt 개 만큼 잘라서 버리기
@@ -29,7 +21,7 @@ export const reverse = (array) => {
  * @param {*} cut_cnt 자를 요소 개수
  * @returns Array
  */
-ArrayUtil.cutByIdxCnt = (array, start_idx, cut_cnt) => {
+export const cutByIdxCnt = (array, start_idx, cut_cnt) => {
   let _array_copy = Array.from(array);
   _array_copy.splice(start_idx, cut_cnt);
   return _array_copy;
@@ -44,7 +36,7 @@ ArrayUtil.cutByIdxCnt = (array, start_idx, cut_cnt) => {
  * @param {*} end_idx 끝 요소 inddex
  * @returns Array
  */
-ArrayUtil.pickByIdxIdx = (array, start_idx, end_idx) => {
+export const pickByIdxIdx = (array, start_idx, end_idx) => {
   const _result = array.slice(start_idx, end_idx + 1);
   return _result;
 }
@@ -58,7 +50,7 @@ ArrayUtil.pickByIdxIdx = (array, start_idx, end_idx) => {
  * @param {*} cut_cnt 자를 요소 개수
  * @returns Array
  */
-ArrayUtil.pickByIdxCnt = (array, start_idx, pick_cnt) => {
+export const pickByIdxCnt = (array, start_idx, pick_cnt) => {
   let _array_copy = Array.from(array);
   const _result = _array_copy.splice(start_idx, pick_cnt);
   return _result;

@@ -1,5 +1,5 @@
 import './App.css';
-import React, {Component} from "react";
+import React, {Component, useEffect} from "react";
 import Header from "./components/Header";
 import Nav from "./components/Nav";
 import ContentWelcome from "./components/ContentWelcome";
@@ -7,13 +7,13 @@ import ContentNormal from "./components/ContentNormal";
 import FormCreate from "./components/FormCreate";
 import FormUpdate from "./components/FormUpdate";
 import ControlBtns from "./components/ControlBtns";
+import * as ArrayUtil from "./js/ArrayUtil";
 
 class App extends Component {
   
   constructor(props) {
     // constructor => 컴포넌트가 실행될때 render 함수 실행전에 초기화 해야 할 부분을 작성한다.
     super(props);
-    console.clear();
     this.state = {
       mode : "welcome",
       selected_id : 0,
@@ -24,10 +24,6 @@ class App extends Component {
       ]
     }
     
-    // var arr = [1,2,3];
-    // console.log(ControlBtns);
-    // console.log(ArrayUtil);
-    // console.log(ArrayUtil.reverse(arr));
   }
   
   getSelectedData() {
@@ -35,7 +31,8 @@ class App extends Component {
   }
   
   render() {
-    console.log(window.ArrayUtil);
+    var arr = [1, 2, 3];
+    console.log(ArrayUtil.reverse(arr));
     
     return (
       <div className="App" data-cpnt="App">
