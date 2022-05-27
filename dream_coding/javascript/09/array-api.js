@@ -43,7 +43,7 @@ const students = [
   { name: 'A', age: 29, enrolled: true, score: 45 },
   { name: 'B', age: 28, enrolled: false, score: 80 },
   { name: 'C', age: 30, enrolled: true, score: 90 },
-  { name: 'D', age: 40, enrolled: false, score: 60 },
+  { name: 'D', age: 40, enrolled: false, score: 66 },
   { name: 'E', age: 18, enrolled: true, score: 88 },
 ];
 
@@ -82,7 +82,7 @@ const students = [
 // https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Array/filter
 {
   console.log('Q6.1.');
-  const result = ArrayUtil.replaceAll(students, "enrolled", true, "score", 10);
+  const result = JsonUtil.replaceAll(students, "enrolled", true, "score", 10);
   console.log(students, result);
 }
 
@@ -93,21 +93,71 @@ const students = [
 // https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Array/map
 {
   console.log('Q7');
-
+  const result = students.map((student, idx) => {
+    return student.score;
+  });
+  console.log(result);
 }
 
-// Q8.
-//
-//
+// Q8. students 배열안에 50 점보다 낮은 학생이 있는지
+// Array.prototype.some()
+// https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Array/some
+{
+  console.log('Q8');
+  const result = students.some((student, idx) => {
+    if (student.score < 50) {
+      return true;
+    }
+  });
+  console.log(result);
+}
+
+// Q9. students 의 score 의 평균 점수는?
+// Array.prototype.reduce()
+// https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Array/Reduce
 {
   console.log('Q9');
-
+  const result = students.reduce((prev, curr) => {
+    console.log(curr.score);
+    return prev + curr.score;
+  }, 0);
+  console.log(result / students.length);
 }
 
-// Q10.
-//
-//
+// Q10. students 의 score가 80 이하인 점수를 문자열로 변환
+// map + filter + join
 {
   console.log('Q10');
-
+  let result = students
+    .map((student, idx) => {
+      return student.score;
+    })
+    .filter((score) => {
+      if (score <= 80) {
+        return true;
+      }
+    })
+    .join();
+  console.log(result);
 }
+
+// Q11. 낮은 점수가 먼저 나오게 정렬
+{
+  console.log('Q11');
+  const result = students
+    .map((student, idx) => {
+      return student.score;
+    })
+    .sort();
+  console.log(result);
+}
+
+
+// Q12. score 가 90 점인 학생 삭제
+{
+  console.log('Q12');
+  const result = JsonUtil.removeByKeyValue(students, "score", 90);
+  console.log(result);
+}
+
+

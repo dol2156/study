@@ -10,7 +10,7 @@ const ArrayUtil = {};
  * @returns Array
  */
 ArrayUtil.reverse = (array) => {
-  let _array_copy = JSON.parse(JSON.stringify(array));
+  let _array_copy = Array.from(array);
   return _array_copy.reverse();
 }
 
@@ -25,7 +25,7 @@ ArrayUtil.reverse = (array) => {
  * @returns Array
  */
 ArrayUtil.cutByIdxCnt = (array, start_idx, cut_cnt) => {
-  let _array_copy = JSON.parse(JSON.stringify(array));
+  let _array_copy = Array.from(array);
   _array_copy.splice(start_idx, cut_cnt);
   return _array_copy;
 }
@@ -54,34 +54,8 @@ ArrayUtil.pickByIdxIdx = (array, start_idx, end_idx) => {
  * @returns Array
  */
 ArrayUtil.pickByIdxCnt = (array, start_idx, pick_cnt) => {
-  let _array_copy = JSON.parse(JSON.stringify(array));
+  let _array_copy = Array.from(array);
   const _result = _array_copy.splice(start_idx, pick_cnt);
   return _result;
 }
 
-/**
- * Object 로 구성된 Array 를 순회하면서
- * key, value 로 object 를 찾아 
- * 해당 object key, value 를 치환한다.
- * @param {*} array 원본 배열
- * @param {*} find_key 배열 내에서 찾는 Object key
- * @param {*} find_value 배열 내에서 찾는 Object value
- * @param {*} replace_key 치환할 key
- * @param {*} replace_value 치환할 value
- * @returns 
- */
-ArrayUtil.replaceAll = (array, find_key, find_value, replace_key = null, replace_value = null) => {
-  let _array_copy = JSON.parse(JSON.stringify(array));
-
-  if (replace_key !== null) {
-    let i_len = _array_copy.length;
-    for (let i = 0; i < i_len; i++) {
-      let _obj = _array_copy[i];
-      if (_obj[find_key] === find_value) {
-        _obj[replace_key] = replace_value;
-      }
-    }
-  }
-
-  return _array_copy;
-}
