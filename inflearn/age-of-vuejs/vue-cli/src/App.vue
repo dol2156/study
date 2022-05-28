@@ -1,28 +1,22 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png" />
-  <HelloWorld msg="Welcome to Your Vue.js App" />
+  <img alt="Vue logo" src="./assets/logo.png">
+  <HelloWorld msg="Welcome to Your Vue.js App"/>
 </template>
 
 <script>
-import HelloWorld from "./components/HelloWorld.vue";
+import HelloWorld from "@/components/HelloWorld";
 
 export default {
-  name: "App",
-  mounted() {
-    console.log("mounted");
-
-    let arr = [1, 2, 3];
-    let result = ArrayUtil.reverse(arr);
-    console.log(result);
-  },
+  name: 'App',
   components: {
-    HelloWorld,
-  },
-};
+    HelloWorld
+  }
+}
 </script>
 
 <style>
 #app {
+  outline:1px dashed red; box-shadow:0px 0px 10px cornflowerblue;
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
