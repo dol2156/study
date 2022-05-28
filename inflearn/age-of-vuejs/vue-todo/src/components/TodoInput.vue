@@ -1,6 +1,19 @@
 <template>
-  <div>TodoInput : {{ message }}</div>
-  <div></div>
+  <div class="input_box">
+    <input
+      type="text" name="name" placeholder="placeholder"
+      v-model="newTodoItem"
+      @keyup.enter="addTodo"
+    />
+    <button
+      class="add_btn"
+      type="button"
+      @click="addTodo"
+    >
+      <i class="fas fa-plus"></i>
+    </button>
+    
+  </div>
 </template>
 <script>
 export default {
@@ -8,8 +21,7 @@ export default {
   props : ['propsdata'],
   data() {
     return {
-      message : "Hello Vue",
-      num : 10,
+      newTodoItem : "",
     };
   },
   computed : {
@@ -24,12 +36,20 @@ export default {
     }
   },
   methods : {
-    onFunc() {
-      console.log("onFunc");
+    addTodo() {
+      localStorage.setItem(this.newTodoItem, this.newTodoItem);
+      this.clearInput();
     },
+    clearInput(){
+      this.newTodoItem = '';
+    }
   },
 }
 </script>
 <!--CSS를 이 구성 요소로만 제한하려면 "범위 지정" 속성을 추가하십시오.-->
 <style scoped>
+.input_box{ font-size:0; display:flex; }
+.input_box > *{ font-size:0.9rem; height:50px; }
+.input_box > input{ flex-grow:1; }
+.input_box > .add_btn{ display:inline-block; width:50px; background-color:plum; }
 </style>

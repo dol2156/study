@@ -31,7 +31,7 @@
 
 // Q4. 0번, 1번 요소를 제외한 나머지 요소를 포함한 배열추출
 // Array.prototype.slice()
-// https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Array/splice
+// https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Array/slice
 {
   console.log('Q4');
   const array = [1, 2, 3, 4, 5];

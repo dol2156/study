@@ -1,5 +1,7 @@
 <template>
-  <div>TodoHeader : {{ message }}</div>
+  <header>
+    <h1>TODO it!</h1>
+  </header>
 </template>
 <script>
 export default {
@@ -31,4 +33,9 @@ export default {
 </script>
 <!--CSS를 이 구성 요소로만 제한하려면 "범위 지정" 속성을 추가하십시오.-->
 <style scoped>
+h1{
+  color:#2f3b52;
+  font-weight:900;
+  margin:2.5rem 0 1.5rem;
+}
 </style>
