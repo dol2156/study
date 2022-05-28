@@ -1,27 +1,32 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div>num : {{num}}</div>
+  <AppHeader
+    :propsdata="message"
+    @renew="renewStr"
+  />
 </template>
-
 <script>
-import HelloWorld from "@/components/HelloWorld";
+import AppHeader from "@/components/AppHeader";
 
 export default {
-  name: 'App',
-  components: {
-    HelloWorld
-  }
+  name : "App",
+  components : {AppHeader},
+  data() {
+    return {
+      message : "Hello",
+      num:0,
+    };
+  },
+  methods : {
+    renewStr() {
+      console.log("renewStr");
+      this.num++;
+    },
+    onFunc() {
+      console.log("onFunc");
+    },
+  },
 }
 </script>
-
 <style>
-#app {
-  outline:1px dashed red; box-shadow:0px 0px 10px cornflowerblue;
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
 </style>
