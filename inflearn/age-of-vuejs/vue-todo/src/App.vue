@@ -8,7 +8,9 @@
     @removeOneItem="removeOneItem"
     @toggleTodo="toggleTodo"
   />
-  <TodoFooter/>
+  <TodoFooter
+    @fnClearAll="onClearAll"
+  />
 </template>
 <script>
 import TodoHeader from "@/components/TodoHeader";
@@ -34,29 +36,29 @@ export default {
     this.loadLocalStorage();
   },
   mounted() {
-    this.$nextTick(function () {
+    this.$nextTick(() => {
       // 전체 화면내용이 렌더링된 후에 아래의 코드가 실행됩니다.
     })
   },
   updated() {
-    this.$nextTick(function () {
+    this.$nextTick(() => {
       // 전체 화면내용이 다시 렌더링된 후에 아래의 코드가 실행됩니다.
     })
   },
   methods : {
-  
     /**
      * 로컬 스토리지 불러오기
      */
     loadLocalStorage() {
-      let len_i = localStorage.length;
+      let _len = localStorage.length;
       let _result = [];
-      for (let i = 0; i < len_i; i++) {
-        let key = localStorage.key(i);
-        let item = JSON.parse(localStorage.getItem(key));
-        _result.push(item);
+      let _key, _item;
+      for (let _i = 0; _i < _len; _i++) {
+        _key = localStorage.key(_i);
+        _item = JSON.parse(localStorage.getItem(_key));
+        _result.push(_item);
       }
-  
+      
       _result = _result.sort((a, b) => {
         return a.value - b.value;
       });
@@ -77,13 +79,27 @@ export default {
       // 저장 후 로컬스토리지 불러오기
       this.loadLocalStorage();
     },
+    
     removeOneItem(item, idx) {
       localStorage.removeItem(item.value);
       this.todoItems = this.$ArrayUtil.removeByIdx(this.todoItems, idx);
     },
-    toggleTodo() {
-      console.log('toggleTodo');
-    }
+    
+    toggleTodo(item) {
+      
+      // 데이터 갱신
+      item.completed = !item.completed;
+      
+      // 로컬 스토리지도 갱신
+      localStorage.removeItem(item.value);
+      localStorage.setItem(item.value, JSON.stringify(item));
+    },
+  
+    onClearAll() {
+      console.log("onClearAll");
+      localStorage.clear();
+      this.todoItems = [];
+    },
   },
 }
 </script>

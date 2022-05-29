@@ -1,9 +1,10 @@
 <template>
   <ul class="todo_list">
-    <li v-for="(item, idx) in todoItems" :key="item.id" :data-idx="idx">
+    <li :class="{ completed : item.completed === true }"
+        v-for="(item, idx) in todoItems" :key="item.id" :data-idx="idx">
       <button
         class="chk_btn" type="button"
-        @click="toggleTodo"
+        @click="toggleTodo(item, idx)"
       >
         <i class="fas fa-check-circle"></i>
       </button>
@@ -22,13 +23,13 @@
 <script>
 export default {
   name : "TodoList",
-  props : ['todoItems'],
+  props : ['todoItems', 'propsAppData'],
   data() {
     return {};
   },
   methods : {
-    toggleTodo(){
-      this.$emit('toggleTodo');
+    toggleTodo(item, idx) {
+      this.$emit('toggleTodo', item, idx);
     },
     removeTodo(item, idx) {
       this.$emit('removeOneItem', item, idx);
@@ -44,6 +45,9 @@ export default {
 .todo_list > li > .text_area{ flex-grow:1; }
 .todo_list > li > .text_area > .text{ display:flex; align-items:center; width:100%; height:100%; }
 .todo_list > li > .text_area > .text{ padding:0 10px; }
-.todo_list > li > .chk_btn{ width:50px; }
-.todo_list > li > .del_btn{ width:50px; }
+.todo_list > li.completed > .text_area > .text{ color:#dddddd; text-decoration:line-through; }
+.todo_list > li > .chk_btn{ width:50px; color:dodgerblue; }
+.todo_list > li.completed > .chk_btn{ color:#dddddd; }
+.todo_list > li > .del_btn{ width:50px; color:darkred; }
+.todo_list > li.completed > .del_btn{ color:#dddddd; }
 </style>

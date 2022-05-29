@@ -18,7 +18,7 @@
 <script>
 export default {
   name : "TodoInput",
-  props : ['propsdata'],
+  props : ['ddd'],
   data() {
     return {
       newTodoItem : "",
@@ -43,6 +43,9 @@ export default {
     clearInput(){
       this.newTodoItem = '';
     }
+  },
+  created() {
+    // 인스턴스가 생성된 후 동기적으로 호출
   },
 }
 </script>

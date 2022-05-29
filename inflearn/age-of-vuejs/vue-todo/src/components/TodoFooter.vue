@@ -1,5 +1,10 @@
 <template>
-  <div>TodoFooter : {{ message }}</div>
+  <footer>
+    <button
+      class="btn_clear_all" type="button"
+      @click="onClearAll"
+    >Clear All</button>
+  </footer>
 </template>
 <script>
 export default {
@@ -23,12 +28,14 @@ export default {
     }
   },
   methods : {
-    onFunc() {
-      console.log("onFunc");
+    onClearAll() {
+      this.$emit('fnClearAll');
     },
   },
 }
 </script>
 <!--CSS를 이 구성 요소로만 제한하려면 "범위 지정" 속성을 추가하십시오.-->
 <style scoped>
+footer{ margin-top:10px; }
+footer > .btn_clear_all{ width:100%; font-size:16px; height:50px; background-color:#999; }
 </style>
