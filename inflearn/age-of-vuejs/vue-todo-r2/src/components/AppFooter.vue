@@ -3,7 +3,13 @@
     <button
       class="btnui btn_clear_all" type="button"
       @click="onRemoveAll"
-    >Clear All</button>
+    >Clear All
+    </button>
+    <button style="margin-left:10px;"
+            class="btnui btn_clear_all" type="button"
+            @click="onIncreseCount"
+    >Increse Count
+    </button>
   </footer>
 </template>
 <script>
@@ -17,6 +23,9 @@ export default {
     };
   },
   methods : {
+    onIncreseCount() {
+      this.$store.commit('setCounter', this.$store.state.counter + 1);
+    },
     onRemoveAll() {
       this.$emit('eRemoveAll');
     },
