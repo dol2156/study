@@ -1,15 +1,12 @@
 <template>
-  <AppHeader/>
-  <AppMain/>
-  <AppFooter/>
+  <footer>
+    <button class="btnui btn_clear_all" type="button">Clear All</button>
+  </footer>
 </template>
 <script>
-import AppHeader from "@/components/AppHeader";
-import AppMain from "@/components/AppMain";
-import AppFooter from "@/components/AppFooter";
 export default {
-  name : "App",
-  components : {AppFooter, AppMain, AppHeader},
+  name : "AppFooter",
+  props : ['propsdata'],
   data() {
     return {
       message : "Hello Vue",
@@ -31,9 +28,7 @@ export default {
   },
 }
 </script>
-<style>
-body{ background-color:#ffffd4; }
-#app{ text-align:center; padding:20px; }
-.inpui{ padding-left:10px; padding-right:10px; height:50px; }
-.btnui{ padding-left:10px; padding-right:10px; height:50px; background-color:#dddddd; }
+<!--CSS를 이 구성 요소로만 제한하려면 "범위 지정" 속성을 추가하십시오.-->
+<style scoped>
+.btn_clear_all{ }
 </style>
