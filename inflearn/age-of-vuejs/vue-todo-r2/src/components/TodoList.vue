@@ -1,11 +1,15 @@
 <template>
   <section class="todo_list_section">
     <ul>
-      <li>Todo Item</li>
-      <li>Todo Item</li>
-      <li>Todo Item</li>
-      <li>Todo Item</li>
-      <li>Todo Item</li>
+      <li>
+        <button class="btnui btn_ok" type="button">OK</button>
+        <div class="text_area">
+          <div>
+            TEXT
+          </div>
+        </div>
+        <button class="btnui btn_del" type="button">DEL</button>
+      </li>
     </ul>
   </section>
 </template>
@@ -21,18 +25,15 @@ export default {
   },
   created() {
     // 인스턴스가 생성된 후 동기적으로 호출
-    console.log('TodoList created');
   },
   mounted() {
     this.$nextTick(function () {
       // 전체 화면내용이 렌더링된 후에 아래의 코드가 실행됩니다.
-      console.log('TodoList mounted');
     })
   },
   updated() {
     this.$nextTick(function () {
       // 전체 화면내용이 다시 렌더링된 후에 아래의 코드가 실행됩니다.
-      console.log('TodoList updated');
     })
   },
 }
@@ -41,6 +42,11 @@ export default {
 <style scoped>
 .todo_list_section{ margin-top:10px; }
 .todo_list_section > ul{ background-color:white; }
-.todo_list_section > ul > li{ border:1px solid #dddddd; height:50px; }
+.todo_list_section > ul > li{ border:1px solid #dddddd; }
 .todo_list_section > ul > li{ display:flex; }
+.todo_list_section > ul > li > *{ height:50px; }
+.todo_list_section > ul > li > .btn_ok{ width:50px; }
+.todo_list_section > ul > li > .text_area{ flex-grow:1; display:flex; align-items:center; }
+.todo_list_section > ul > li > .text_area{ padding-left:10px; padding-right:10px; }
+.todo_list_section > ul > li > .btn_del{ width:50px; }
 </style>

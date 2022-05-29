@@ -12,8 +12,7 @@ export default {
   components : {AppFooter, AppMain, AppHeader},
   data() {
     return {
-      message : "Hello Vue",
-      num : 10,
+      todo_list : []
     };
   },
   created() {
