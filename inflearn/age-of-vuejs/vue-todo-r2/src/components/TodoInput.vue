@@ -3,6 +3,7 @@
     <input
       class="inpui input_todo" type="text" name="input_todo" placeholder="Todo..."
       v-model="input_todo"
+      @keyup.enter="addTodoItem"
     />
     <button
       class="btnui btn_add" type="button"

@@ -2,7 +2,10 @@
   <AppHeader/>
   <main>
     <TodoInput @addTodoItem="setData"/>
-    <TodoList :props_todo_list="this.todo_list"/>
+    <TodoList
+      :props_todo_list="this.todo_list"
+      @eDelTodo="onDelTodo"
+    />
   </main>
   <AppFooter/>
 </template>
@@ -20,14 +23,24 @@ export default {
     };
   },
   methods : {
+    onDelTodo(todo_obj) {
+      const _key = todo_obj.value;
+      localStorage.removeItem(_key);
+      
+      this.syncData();
+    },
+    
+    
     setData(todo_obj) {
       const _key = todo_obj.value;
       const _value = JSON.stringify(todo_obj);
       localStorage.setItem(_key, _value);
       
-      this.getData();
+      this.syncData();
     },
-    getData() {
+    
+    
+    syncData() {
       let _len = localStorage.length;
       let _key, _item, _arr = [];
       for (let _i = 0; _i < _len; _i++) {
@@ -41,7 +54,7 @@ export default {
   },
   created() {
     // 인스턴스가 생성된 후 동기적으로 호출
-    this.getData();
+    this.syncData();
   },
   mounted() {
     this.$nextTick(function () {

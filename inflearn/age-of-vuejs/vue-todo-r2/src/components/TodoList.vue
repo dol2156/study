@@ -2,13 +2,18 @@
   <section class="todo_list_section">
     <ul>
       <li v-for="(todo_obj, idx) in props_todo_list" :key="todo_obj.id" :data-idx="idx">
-        <button class="btnui btn_ok" type="button">OK</button>
+        <button
+          class="btnui btn_ok" type="button"
+        >OK</button>
         <div class="text_area">
           <div>
             {{ todo_obj.value }}
           </div>
         </div>
-        <button class="btnui btn_del" type="button">DEL</button>
+        <button
+          class="btnui btn_del" type="button"
+          @click="onDelTodo(todo_obj)"
+        >DEL</button>
       </li>
     </ul>
   </section>
@@ -19,6 +24,11 @@ export default {
   props : ['props_todo_list'],
   data() {
     return {};
+  },
+  methods : {
+    onDelTodo(todo_obj) {
+      this.$emit('eDelTodo', todo_obj);
+    },
   },
   created() {
     // 인스턴스가 생성된 후 동기적으로 호출
