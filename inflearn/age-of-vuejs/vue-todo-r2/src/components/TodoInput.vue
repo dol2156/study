@@ -1,7 +1,14 @@
 <template>
   <section class="input_section">
-    <input class="inpui input_todo" type="text" name="name" placeholder="placeholder"/>
-    <button class="btnui btn_add" type="button">ADD</button>
+    <input
+      class="inpui input_todo" type="text" name="input_todo" placeholder="Todo..."
+      v-model="input_todo"
+    />
+    <button
+      class="btnui btn_add" type="button"
+      @click="addTodoItem"
+    >ADD
+    </button>
   </section>
 </template>
 <script>
@@ -10,9 +17,19 @@ export default {
   props : ['propsdata'],
   data() {
     return {
-      message : "Hello Vue",
-      num : 10,
+      input_todo : "",
     };
+  },
+  methods : {
+    addTodoItem() {
+      const _todo_str = this.input_todo.trim();
+      if (_todo_str === "") return;
+      
+      var _new_todo_obj = {value : _todo_str, ok : false};
+      this.$emit('addTodoItem', _new_todo_obj);
+  
+      this.input_todo = '';
+    },
   },
   created() {
     // 인스턴스가 생성된 후 동기적으로 호출
