@@ -6,6 +6,7 @@
   <TodoList
     :todoItems="todoItems"
     @removeOneItem="removeOneItem"
+    @toggleTodo="toggleTodo"
   />
   <TodoFooter/>
 </template>
@@ -30,12 +31,7 @@ export default {
   },
   created() {
     // 인스턴스가 생성된 후 동기적으로 호출
-    let len_i = localStorage.length;
-    for (let i = 0; i < len_i; i++) {
-      this.todoItems.push(localStorage.key(i));
-    }
-    this.todoItems = this.todoItems.sort();
-    
+    this.loadLocalStorage();
   },
   mounted() {
     this.$nextTick(function () {
@@ -48,15 +44,46 @@ export default {
     })
   },
   methods : {
+  
+    /**
+     * 로컬 스토리지 불러오기
+     */
+    loadLocalStorage() {
+      let len_i = localStorage.length;
+      let _result = [];
+      for (let i = 0; i < len_i; i++) {
+        let key = localStorage.key(i);
+        let item = JSON.parse(localStorage.getItem(key));
+        _result.push(item);
+      }
+  
+      _result = _result.sort((a, b) => {
+        return a.value - b.value;
+      });
+      
+      this.todoItems = _result;
+    },
+    
     addOneItem(item) {
-      localStorage.setItem(item, item);
-      this.todoItems.push(item);
-      this.todoItems = this.todoItems.sort();
+      // 공백 입력 방지
+      if (item.trim() === "") return;
+      
+      // 새 아이템 생성
+      const obj = {completed : false, value : item};
+      
+      // 저장
+      localStorage.setItem(item, JSON.stringify(obj));
+      
+      // 저장 후 로컬스토리지 불러오기
+      this.loadLocalStorage();
     },
     removeOneItem(item, idx) {
-      localStorage.removeItem(item);
+      localStorage.removeItem(item.value);
       this.todoItems = this.$ArrayUtil.removeByIdx(this.todoItems, idx);
     },
+    toggleTodo() {
+      console.log('toggleTodo');
+    }
   },
 }
 </script>

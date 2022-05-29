@@ -1,11 +1,14 @@
 <template>
   <ul class="todo_list">
     <li v-for="(item, idx) in todoItems" :key="item.id" :data-idx="idx">
-      <button class="chk_btn" type="button">
+      <button
+        class="chk_btn" type="button"
+        @click="toggleTodo"
+      >
         <i class="fas fa-check-circle"></i>
       </button>
       <div class="text_area">
-        <div class="text">{{ item }}</div>
+        <div class="text">{{ item.value }}</div>
       </div>
       <button
         class="del_btn" type="button"
@@ -24,6 +27,9 @@ export default {
     return {};
   },
   methods : {
+    toggleTodo(){
+      this.$emit('toggleTodo');
+    },
     removeTodo(item, idx) {
       this.$emit('removeOneItem', item, idx);
     },
