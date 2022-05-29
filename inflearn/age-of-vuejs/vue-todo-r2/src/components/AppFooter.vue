@@ -1,6 +1,9 @@
 <template>
   <footer>
-    <button class="btnui btn_clear_all" type="button">Clear All</button>
+    <button
+      class="btnui btn_clear_all" type="button"
+      @click="onRemoveAll"
+    >Clear All</button>
   </footer>
 </template>
 <script>
@@ -12,6 +15,11 @@ export default {
       message : "Hello Vue",
       num : 10,
     };
+  },
+  methods : {
+    onRemoveAll() {
+      this.$emit('eRemoveAll');
+    },
   },
   created() {
     // 인스턴스가 생성된 후 동기적으로 호출

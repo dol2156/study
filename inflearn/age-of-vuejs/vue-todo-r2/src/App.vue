@@ -7,7 +7,7 @@
       @eDelTodo="onDelTodo"
     />
   </main>
-  <AppFooter/>
+  <AppFooter @eRemoveAll="onRemoveAll"/>
 </template>
 <script>
 import AppHeader from "@/components/AppHeader";
@@ -23,6 +23,12 @@ export default {
     };
   },
   methods : {
+    onRemoveAll() {
+      localStorage.clear();
+      
+      this.syncData();
+    },
+    
     onDelTodo(todo_obj) {
       const _key = todo_obj.value;
       localStorage.removeItem(_key);
