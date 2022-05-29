@@ -10,6 +10,7 @@
             @click="onIncreseCount"
     >Increse Count
     </button>
+    <div>{{ this.$pinia.count }}</div>
   </footer>
 </template>
 <script>
@@ -24,7 +25,11 @@ export default {
   },
   methods : {
     onIncreseCount() {
+      // vuex
       this.$store.commit('setCounter', this.$store.state.counter + 1);
+      
+      // pinia
+      this.$pinia.count++;
     },
     onRemoveAll() {
       this.$emit('eRemoveAll');
