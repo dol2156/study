@@ -2,12 +2,13 @@
   <section class="todo_list_section">
     <ul>
       <li :class="{ ok : todo_obj.ok === true }"
-        v-for="(todo_obj, idx) in props_todo_list" :key="todo_obj.id" :data-idx="idx"
+          v-for="(todo_obj, idx) in props_todo_list" :key="todo_obj.id" :data-idx="idx"
       >
         <button
           class="btnui btn_ok" type="button"
           @click="onToggleOK(todo_obj)"
-        >OK</button>
+        >OK
+        </button>
         <div class="text_area">
           <div>
             {{ todo_obj.value }}
@@ -16,7 +17,8 @@
         <button
           class="btnui btn_del" type="button"
           @click="onDelTodo(todo_obj)"
-        >DEL</button>
+        >DEL
+        </button>
       </li>
     </ul>
   </section>
