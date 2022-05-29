@@ -1,7 +1,12 @@
 <template>
   <TodoHeader/>
-  <TodoInput/>
-  <TodoList/>
+  <TodoInput
+    @addOneItem="addOneItem"
+  />
+  <TodoList
+    :todoItems="todoItems"
+    @removeOneItem="removeOneItem"
+  />
   <TodoFooter/>
 </template>
 <script>
@@ -9,11 +14,14 @@ import TodoHeader from "@/components/TodoHeader";
 import TodoInput from "@/components/TodoInput";
 import TodoList from "@/components/TodoList";
 import TodoFooter from "@/components/TodoFooter";
+
 export default {
   name : "App",
   components : {TodoFooter, TodoList, TodoInput, TodoHeader},
   data() {
-    return {};
+    return {
+      todoItems : [],
+    };
   },
   computed : {
     doubleNum() {
@@ -22,6 +30,12 @@ export default {
   },
   created() {
     // 인스턴스가 생성된 후 동기적으로 호출
+    let len_i = localStorage.length;
+    for (let i = 0; i < len_i; i++) {
+      this.todoItems.push(localStorage.key(i));
+    }
+    this.todoItems = this.todoItems.sort();
+    
   },
   mounted() {
     this.$nextTick(function () {
@@ -32,7 +46,18 @@ export default {
     this.$nextTick(function () {
       // 전체 화면내용이 다시 렌더링된 후에 아래의 코드가 실행됩니다.
     })
-  }
+  },
+  methods : {
+    addOneItem(item) {
+      localStorage.setItem(item, item);
+      this.todoItems.push(item);
+      this.todoItems = this.todoItems.sort();
+    },
+    removeOneItem(item, idx) {
+      localStorage.removeItem(item);
+      this.todoItems = this.$ArrayUtil.removeByIdx(this.todoItems, idx);
+    },
+  },
 }
 </script>
 <style>
