@@ -4,6 +4,7 @@
     <TodoInput @addTodoItem="setData"/>
     <TodoList
       :props_todo_list="this.todo_list"
+      @eToggleOK="onToggleOK"
       @eDelTodo="onDelTodo"
     />
   </main>
@@ -23,6 +24,15 @@ export default {
     };
   },
   methods : {
+    onToggleOK(todo_obj) {
+      todo_obj.ok = !todo_obj.ok;
+      
+      const _key = todo_obj.value;
+      localStorage.removeItem(_key);
+      
+      this.setData(todo_obj);
+    },
+    
     onRemoveAll() {
       localStorage.clear();
       
@@ -36,7 +46,6 @@ export default {
       this.syncData();
     },
     
-    
     setData(todo_obj) {
       const _key = todo_obj.value;
       const _value = JSON.stringify(todo_obj);
@@ -44,7 +53,6 @@ export default {
       
       this.syncData();
     },
-    
     
     syncData() {
       let _len = localStorage.length;

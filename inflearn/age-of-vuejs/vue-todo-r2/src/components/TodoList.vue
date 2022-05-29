@@ -1,9 +1,12 @@
 <template>
   <section class="todo_list_section">
     <ul>
-      <li v-for="(todo_obj, idx) in props_todo_list" :key="todo_obj.id" :data-idx="idx">
+      <li :class="{ ok : todo_obj.ok === true }"
+        v-for="(todo_obj, idx) in props_todo_list" :key="todo_obj.id" :data-idx="idx"
+      >
         <button
           class="btnui btn_ok" type="button"
+          @click="onToggleOK(todo_obj)"
         >OK</button>
         <div class="text_area">
           <div>
@@ -26,6 +29,10 @@ export default {
     return {};
   },
   methods : {
+    onToggleOK(todo_obj) {
+      this.$emit('eToggleOK', todo_obj);
+    },
+    
     onDelTodo(todo_obj) {
       this.$emit('eDelTodo', todo_obj);
     },
@@ -51,6 +58,7 @@ export default {
 .todo_list_section > ul{ }
 .todo_list_section > ul > li{ border:1px solid #dddddd; background-color:white; }
 .todo_list_section > ul > li{ display:flex; }
+.todo_list_section > ul > li.ok{ opacity:0.5; }
 .todo_list_section > ul > li + li{ margin-top:5px; }
 .todo_list_section > ul > li > *{ height:50px; }
 .todo_list_section > ul > li > .btn_ok{ width:50px; }
