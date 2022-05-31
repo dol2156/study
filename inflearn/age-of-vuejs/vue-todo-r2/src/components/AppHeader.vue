@@ -1,5 +1,5 @@
 <template>
-  <header>{{ this.$store.state.header_text }} {{ this.$store.state.counter }} {{  }}</header>
+  <header>TODO it!</header>
 </template>
 <script>
 export default {
