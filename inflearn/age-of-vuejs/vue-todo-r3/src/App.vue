@@ -1,8 +1,15 @@
 <template>
   <div>App : {{ message }}</div>
+  <div>commonStore.num : {{ commonStore.num }}</div>
 </template>
 <script>
+import {useCommonStore} from "@/stores/common";
+
 export default {
+  setup() {
+    const commonStore = useCommonStore();
+    return {commonStore}
+  },
   name : "App",
   data() {
     return {

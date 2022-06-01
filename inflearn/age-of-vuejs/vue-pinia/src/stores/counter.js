@@ -1,6 +1,6 @@
 import {defineStore} from "pinia";
 
-export const commonStore = defineStore("commonStore", {
+export const useCounterStore = defineStore("counter", {
   
   // state : 여러 컴포넌트에 공유되는 데이터 ( data )
   state : () => ({

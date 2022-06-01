@@ -1,6 +1,6 @@
 import {defineStore} from "pinia";
 
-export const counterStore = defineStore("counterStore", {
+export const useCommonStore = defineStore("common", {
   
   // state : 여러 컴포넌트에 공유되는 데이터 ( data )
   state : () => ({
@@ -17,7 +17,8 @@ export const counterStore = defineStore("counterStore", {
   // actions : state 값을 변경하는 이벤트 로직, 메서드 ( methods )
   actions : {
     increment() {
-      this.count++;
+      console.log('increment');
+      this.num++;
     }
   },
   

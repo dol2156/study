@@ -1,21 +1,33 @@
 <template>
   <div>{{ message }}</div>
-  <div>counter count : {{ common.num }}</div>
-  <div>counter count : {{ $counterStore.num }}</div>
+  <div>common num : {{ commonStore.num }}</div>
+  <div>counter num : {{ this.$counterStore.num }}</div>
+  <div>
+    <button
+      type="button"
+      @click="onIncrement"
+    >increment
+    </button>
+  </div>
 </template>
 <script>
-import {commonStore} from "@/stores/commomStore";
+import {useCommonStore} from "@/stores/common";
 
 export default {
   setup() {
-    const common = commonStore();
-    return {common}
+    const commonStore = useCommonStore();
+    return {commonStore}
   },
   name : 'App',
   data() {
     return {
       message : "HI",
     };
+  },
+  methods : {
+    onIncrement() {
+      this.commonStore.increment();
+    },
   },
   created() {
     // 인스턴스가 생성된 후 동기적으로 호출
