@@ -19,19 +19,48 @@ export const useCommonStore = defineStore("common", {
     increment() {
       this.count++;
     },
+    
+    
     addTodoItem(todo_title) {
       const obj = {
         title : todo_title.trim(),
         is_complete : false,
       };
       localStorage.setItem(todo_title, JSON.stringify(obj));
+      
+      this.loadTodoList();
     },
+    
+    deleteTodoItem(todo_title){
+      localStorage.removeItem(todo_title);
+  
+      this.loadTodoList();
+    },
+  
+    deleteAllTodoItem() {
+      localStorage.clear();
+      
+      this.loadTodoList();
+    },
+    
+    toggleTodoItem(todo_title){
+      const _todo_obj = JSON.parse(localStorage.getItem(todo_title));
+      _todo_obj.is_complete = !_todo_obj.is_complete;
+  
+      localStorage.setItem(todo_title, JSON.stringify(_todo_obj));
+  
+      this.loadTodoList();
+    },
+    
     loadTodoList() {
-      const arr = [
-        {title : "A", is_completed : false},
-        {title : "B", is_completed : false},
-        {title : "C", is_completed : false},
-      ];
+      const arr = [];
+  
+      const _len = localStorage.length;
+      for (let _i = 0; _i < _len; _i++) {
+        const _obj = JSON.parse(localStorage.getItem(localStorage.key(_i)));
+        arr.push(_obj);
+      }
+      
       this.todo_list = arr;
     },
   },

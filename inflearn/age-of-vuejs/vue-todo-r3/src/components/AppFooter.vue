@@ -1,6 +1,9 @@
 <template>
   <footer>
-    <button class="btnui" type="button">모두 삭제</button>
+    <button
+      class="btnui" type="button"
+      @click="onDeleteAll"
+    >모두 삭제</button>
     <div>Copyright ⓒ. All rights reserved.</div>
   </footer>
 </template>
@@ -11,6 +14,11 @@ export default {
     return {
       message : "Hello Vue",
     };
+  },
+  methods : {
+    onDeleteAll() {
+      this.$commonStore.deleteAllTodoItem();
+    },
   },
 }
 </script>
