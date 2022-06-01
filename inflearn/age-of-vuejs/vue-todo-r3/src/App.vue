@@ -2,21 +2,14 @@
   <AppHeader/>
   <AppMain/>
   <AppFooter/>
-  <button id="show-modal" @click="showModal = true">Show Modal</button>
-  <AppModal v-if="showModal" @close="showModal = false">
-    <template v-slot:header>
-      <h3>custom header</h3>
-    </template>
-  </AppModal>
 </template>
 <script>
 import AppHeader from "@/components/AppHeader";
 import AppMain from "@/components/AppMain";
 import AppFooter from "@/components/AppFooter";
-import AppModal from "@/components/common/AppModal";
 
 export default {
-  components : {AppModal, AppFooter, AppMain, AppHeader},
+  components : {AppFooter, AppMain, AppHeader},
   name : "App",
   data() {
     return {
