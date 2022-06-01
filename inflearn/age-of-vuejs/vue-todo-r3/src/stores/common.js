@@ -6,6 +6,7 @@ export const useCommonStore = defineStore("common", {
   state : () => ({
     num : 200,
     todo_list : [],
+    user_name : "강석민",
   }),
   
   // getters : 연산된 state 값을 접근하는 속성 ( computed )
@@ -17,6 +18,13 @@ export const useCommonStore = defineStore("common", {
   actions : {
     increment() {
       this.count++;
+    },
+    addTodoItem(todo_title) {
+      const obj = {
+        title : todo_title.trim(),
+        is_complete : false,
+      };
+      localStorage.setItem(todo_title, JSON.stringify(obj));
     },
     loadTodoList() {
       const arr = [
