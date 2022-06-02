@@ -1,26 +1,55 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <nav>
+    <ul>
+      <li>
+        <router-link to="/">Go to HOME</router-link>
+      </li>
+      <li>
+        <router-link to="/news">Go to NEWS</router-link>
+      </li>
+    </ul>
+    <ul>
+      <li>
+        <button
+          type="button"
+          @click="onHomeClick"
+        >HOME
+        </button>
+      </li>
+      <li>
+        <button
+          type="button"
+          @click="onNewsClick"
+        >NEWS
+        </button>
+      </li>
+    </ul>
+  </nav>
+  <router-view/>
 </template>
-
 <script>
-import HelloWorld from './components/HelloWorld.vue'
-
 export default {
-  name: 'App',
-  components: {
-    HelloWorld
-  }
+  name : "App",
+  data() {
+    return {
+      message : "Hello Vue",
+    };
+  },
+  methods : {
+    onHomeClick() {
+      this.$router.push('/home');
+    },
+    onNewsClick() {
+      this.$router.push('/news');
+    },
+  },
 }
 </script>
-
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+button{ cursor:pointer; }
+nav{}
+nav > ul{ list-style:none; padding:0; }
+nav > ul > li{ display:inline-block; }
+nav > ul > li + li{ margin-left:10px; }
+nav > ul > li > a{}
 </style>
