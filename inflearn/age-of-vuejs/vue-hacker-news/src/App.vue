@@ -3,18 +3,20 @@
     <nav>
       <ul>
         <li class="on">
-          <a href="/">News</a>
+          <router-link to="/news">News</router-link>
         </li>
         <li>
-          <a href="/">Ask</a>
+          <router-link to="/ask">Ask</router-link>
         </li>
         <li>
-          <a href="/">Jobs</a>
+          <router-link to="/jobs">Jobs</router-link>
         </li>
       </ul>
     </nav>
   </header>
-  <main></main>
+  <main>
+    <router-view/>
+  </main>
 </template>
 <script>
 export default {
