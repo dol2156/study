@@ -21,5 +21,6 @@ function fetchPostList() {
 }
 
 export {
-  fetchUserList, fetchPostList
+  fetchUserList,
+  fetchPostList
 }

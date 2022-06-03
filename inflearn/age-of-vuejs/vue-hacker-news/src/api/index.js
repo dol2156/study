@@ -15,18 +15,20 @@ const config = {
 /************************************************
  API 함수들
  *************************************************/
-const newsList = () => {
+const fetchNewsList = () => {
   return axios.get(`${config.base_url}/news/1.json`);
 }
 
-const askList = () => {
+const fetchAskList = () => {
   return axios.get(`${config.base_url}/ask/1.json`);
 }
 
-const jobsList = () => {
+const fetchJobsList = () => {
   return axios.get(`${config.base_url}/jobs/1.json`);
 }
 
 export default {
-  newsList, askList, jobsList
+  fetchNewsList,
+  fetchAskList,
+  fetchJobsList,
 }

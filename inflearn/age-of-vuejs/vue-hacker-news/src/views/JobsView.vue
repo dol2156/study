@@ -1,13 +1,20 @@
 <template>
-  <div>JobsView : {{ message }}</div>
+  <div>JobsView</div>
+  <ul>
+    <li v-for="(item, idx) in $commonStore.jobs_list" :key="item.id" :data-idx="idx">
+      {{ idx }} {{ item.title }}
+    </li>
+  </ul>
 </template>
 <script>
 export default {
   name : "JobsView",
   data() {
-    return {
-      message : "Hello Vue",
-    };
+    return {};
+  },
+  created() {
+    // 인스턴스가 생성된 후 동기적으로 호출
+    this.$commonStore.storeJobsList();
   },
 }
 </script>

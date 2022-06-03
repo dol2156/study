@@ -7,7 +7,7 @@ import JobsView from "@/views/JobsView";
 const routes = [
   {
     path : "/",
-    redirect : "/news",// 리다이렉트 필요시 작성
+    redirect : "/jobs",// 리다이렉트 필요시 작성
   },
   {
     path : "/news",

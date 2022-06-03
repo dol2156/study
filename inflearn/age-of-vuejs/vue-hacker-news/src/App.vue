@@ -37,6 +37,6 @@ header > nav > ul > li{ display:inline-block; }
 header > nav > ul > li + li{ margin-left:10px; }
 header > nav > ul > li > a{ color:white; font-size:20px; line-height:35px; }
 header > nav > ul > li > a{ opacity:0.5; }
-header > nav > ul > li.on > a{ opacity:1; }
+header > nav > ul > li > a.router-link-active{ opacity:1; }
 header > nav > ul > li > a:hover{ text-decoration:underline; }
 </style>
