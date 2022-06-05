@@ -1,6 +1,8 @@
 <template>
   <component :is="this.$route.meta.layout || 'DefaultLayout'">
-    <slot></slot>
+    <main>
+      <slot></slot>
+    </main>
   </component>
 </template>
 

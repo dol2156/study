@@ -1,25 +1,28 @@
 import { createRouter, createWebHistory } from "vue-router";
-import MainView from "@/views/MainView";
-import LoginView from "@/views/LoginView";
 
+import NewsView from '@/views/NewsView';
+import JobsView from '@/views/JobsView';
+import AskView from '@/views/AskView';
 
 const routes = [
   {
     path: "/",
-    redirect: "/main",// 리다이렉트 필요시 작성
+    redirect: "/news",// 리다이렉트 필요시 작성
   },
   {
-    path: "/main",
-    name: "메인",
-    component: MainView,
+    path: "/news",
+    name: "뉴스",
+    component: NewsView,
   },
   {
-    path: "/login",
-    name: "로그인",
-    component: LoginView,
-    meta: {
-      layout: 'EmptyLayout'
-    }
+    path: "/ask",
+    name: "질문&답변",
+    component: AskView,
+  },
+  {
+    path: "/jobs",
+    name: "구인&구직",
+    component: JobsView,
   },
 ];
 
