@@ -17,6 +17,9 @@ const routes = [
     path: "/login",
     name: "로그인",
     component: LoginView,
+    meta: {
+      layout: 'EmptyLayout'
+    }
   },
 ];
 
