@@ -20,7 +20,7 @@ const fetchPostList = () => {
   return axios.get(`${config.base_url}/posts`);
 }
 
-export {
+export default {
   fetchUserList,
   fetchPostList
 }
