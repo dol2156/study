@@ -24,10 +24,10 @@ export const useCommonStore = defineStore("common", {
       this.num++;
     },
     getNewsList() {
+      console.log('getNewsList');
       api.fetchNewsList()
         .then((response) => {
           // success
-          console.table(response.data[0]);
           this.newsList = response.data;
         })
         .catch((error) => {
@@ -39,10 +39,10 @@ export const useCommonStore = defineStore("common", {
         });
     },
     getAskList() {
+      console.log('getAskList');
       api.fetchAskList()
         .then((response) => {
           // success
-          console.table(response.data[0]);
           this.askList = response.data;
         })
         .catch((error) => {
