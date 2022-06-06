@@ -22,5 +22,9 @@ export default {
   text-align: center;
   color: #2c3e50;
   margin-top: 60px;
+  > img{
+    outline: 1px dashed red;
+    box-shadow: 0px 0px 10px cornflowerblue;
+  }
 }
 </style>
