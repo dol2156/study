@@ -1,11 +1,15 @@
 <template>
-  <div>NewsView</div>
+  <div>NewsView : {{ message }}</div>
 </template>
-
 <script>
 export default {
-  name: "NewsView",
-};
+  name : "NewsView",
+  data() {
+    return {
+      message : "Hello Vue",
+    };
+  },
+}
 </script>
-
-<style scoped></style>
+<style lang="">
+</style>
