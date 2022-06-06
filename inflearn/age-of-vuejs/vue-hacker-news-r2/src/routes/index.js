@@ -3,6 +3,7 @@ import { createRouter, createWebHistory } from "vue-router";
 import NewsView from '@/views/NewsView';
 import JobsView from '@/views/JobsView';
 import AskView from '@/views/AskView';
+import UserView from "@/views/UserView";
 
 const routes = [
   {
@@ -23,6 +24,11 @@ const routes = [
     path: "/jobs",
     name: "구인&구직",
     component: JobsView,
+  },
+  {
+    path: "/user",
+    name: "사용자 정보",
+    component: UserView,
   },
 ];
 

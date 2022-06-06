@@ -16,4 +16,6 @@ export default {
 };
 </script>
 
-<style></style>
+<style lang="scss">
+main{ padding:10px; }
+</style>
