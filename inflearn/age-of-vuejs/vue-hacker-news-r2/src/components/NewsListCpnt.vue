@@ -1,6 +1,6 @@
 <template>
   <ul class="new_item_list">
-    <li v-for="(item, idx) in this.$commonStore.askList" :key="item.id" :data-idx="idx">
+    <li v-for="(item, idx) in this.propsData.list_data" :key="item.id" :data-idx="idx">
       <div class="left_area">
         <div class="point">{{ item.points }}</div>
       </div>
@@ -24,16 +24,10 @@
 <script>
 export default {
   name : "NewsListCpnt",
-  props:['props'],
-  computed : {
-    getNewsItemList() {
-      return [1, 2, 3]
-    }
-  },
+  props:['propsData'],
   created() {
     // 인스턴스가 생성된 후 동기적으로 호출
     console.log("NewsListCpnt created");
-    // console.log(this.propsData);
   },
 }
 </script>
