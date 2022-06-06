@@ -6,8 +6,11 @@ export const useCommonStore = defineStore("common", {
   // state : 여러 컴포넌트에 공유되는 데이터 ( data )
   state : () => ({
     num : 100,
-    newsList : [],
-    askList : [],
+    NewsListCpnt : {
+      newsList : [],
+      askList : [],
+      jobsList : [],
+    },
   }),
   
   // getters : 연산된 state 값을 접근하는 속성 ( computed )
@@ -24,11 +27,10 @@ export const useCommonStore = defineStore("common", {
       this.num++;
     },
     getNewsList() {
-      console.log('getNewsList');
       api.fetchNewsList()
         .then((response) => {
           // success
-          this.newsList = response.data;
+          this.NewsListCpnt.newsList = response.data;
         })
         .catch((error) => {
           // error
@@ -39,11 +41,24 @@ export const useCommonStore = defineStore("common", {
         });
     },
     getAskList() {
-      console.log('getAskList');
       api.fetchAskList()
         .then((response) => {
           // success
-          this.askList = response.data;
+          this.NewsListCpnt.askList = response.data;
+        })
+        .catch((error) => {
+          // error
+          console.log(error);
+        })
+        .then(() => {
+          // complete
+        });
+    },
+    getJobsList() {
+      api.fetchJobsList()
+        .then((response) => {
+          // success
+          this.NewsListCpnt.jobsList = response.data;
         })
         .catch((error) => {
           // error

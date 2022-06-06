@@ -1,8 +1,8 @@
 <template>
   <ul class="new_item_list">
-    <li v-for="(item, idx) in this.propsData.list_data" :key="item.id" :data-idx="idx">
+    <li v-for="(item, idx) in getListData" :key="item.id" :data-idx="idx">
       <div class="left_area">
-        <div class="point">{{ item.points }}</div>
+        <div class="point">{{ item.points || 0 }}</div>
       </div>
       <div class="right_area">
         <div class="shell">
@@ -14,7 +14,9 @@
           </template>
           <div class="info">
             {{ item.time_ago }}
-            <router-link to="/user">{{ item.user }}</router-link>
+            <template v-if="item.user">
+              | <router-link to="/user">{{ item.user }}</router-link>
+            </template>
           </div>
         </div>
       </div>
@@ -24,10 +26,31 @@
 <script>
 export default {
   name : "NewsListCpnt",
-  props:['propsData'],
+  props : ["listType"],
+  computed : {
+    getListData() {
+      
+      let listData = [];
+      switch (this.listType) {
+        case 'news':
+          listData = this.$commonStore.NewsListCpnt.newsList;
+          break;
+        case 'ask':
+          listData = this.$commonStore.NewsListCpnt.askList;
+          break;
+        case 'jobs':
+          listData = this.$commonStore.NewsListCpnt.jobsList;
+          break;
+        default:
+          // default code block
+          console.warn('listType is undefined');
+      }
+      
+      return listData;
+    }
+  },
   created() {
     // 인스턴스가 생성된 후 동기적으로 호출
-    console.log("NewsListCpnt created");
   },
 }
 </script>
