@@ -1,5 +1,9 @@
 import {defineStore} from "pinia";
-import api from '@/api/index';
+import {
+  fetchNewsList,
+  fetchAskList,
+  fetchJobsList,
+} from '@/api/index';
 
 export const useCommonStore = defineStore("common", {
   
@@ -22,12 +26,9 @@ export const useCommonStore = defineStore("common", {
   
   // actions : state 값을 변경하는 이벤트 로직, 메서드 ( methods )
   actions : {
-    increment() {
-      console.log('increment');
-      this.num++;
-    },
     getNewsList() {
-      api.fetchNewsList()
+      
+      return fetchNewsList()
         .then((response) => {
           // success
           this.NewsListCpnt.newsList = response.data;
@@ -41,7 +42,7 @@ export const useCommonStore = defineStore("common", {
         });
     },
     getAskList() {
-      api.fetchAskList()
+      return fetchAskList()
         .then((response) => {
           // success
           this.NewsListCpnt.askList = response.data;
@@ -55,7 +56,7 @@ export const useCommonStore = defineStore("common", {
         });
     },
     getJobsList() {
-      api.fetchJobsList()
+      return fetchJobsList()
         .then((response) => {
           // success
           this.NewsListCpnt.jobsList = response.data;

@@ -5,7 +5,7 @@ import axios from "axios";
 
 // HTTP Request & Response 와 관련된 기본설정
 const config = {
-  base_url: "https://jsonplaceholder.typicode.com"
+  base_url : "https://jsonplaceholder.typicode.com"
 }
 
 /************************************************

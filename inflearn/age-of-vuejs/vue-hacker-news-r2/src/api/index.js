@@ -17,20 +17,14 @@ const config = {
  API 함수들
  *************************************************/
 
-const fetchNewsList = () => {
+export const fetchNewsList = () => {
   return axios.get(`${config.baseUrl}/news/1.json`);
 }
 
-const fetchAskList = () => {
+export const fetchAskList = () => {
   return axios.get(`${config.baseUrl}/ask/1.json`);
 }
 
-const fetchJobsList = () => {
+export const fetchJobsList = () => {
   return axios.get(`${config.baseUrl}/jobs/1.json`);
-}
-
-export default {
-  fetchNewsList,
-  fetchAskList,
-  fetchJobsList,
 }
