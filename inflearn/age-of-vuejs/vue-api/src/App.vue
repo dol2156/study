@@ -14,30 +14,22 @@
   </ul>
 </template>
 <script>
-import {fetchPostList, fetchUserList} from "@/api";
+import { fetchPostList, fetchUserList } from "@/api";
 export default {
-  name : "App",
+  name: "App",
   data() {
     return {
-      message : "Hello Vue",
-      user_list : [],
-      post_list : [],
+      message: "Hello Vue",
+      user_list: [],
+      post_list: [],
     };
   },
   created() {
-    // 인스턴스가 생성된 후 동기적으로 호출
-    fetchUserList()
-      .then((response) => {
-        this.user_list = response.data;
-      })
-      .catch((error) => {
-        // console.log('에러 핸들링');
-        console.log(error);
-      })
-      .then(() => {
-        // console.log('항상 실행되는 영역');
-      });
-    
+    (async () => {
+      const response = await fetchUserList();
+      this.user_list = response.data;
+    })();
+
     fetchPostList()
       .then((response) => {
         this.post_list = response.data;
@@ -45,11 +37,8 @@ export default {
       .catch((error) => {
         console.log(error);
       })
-      .then(() => {
-      });
-    
+      .then(() => {});
   },
-}
+};
 </script>
-<style>
-</style>
+<style></style>

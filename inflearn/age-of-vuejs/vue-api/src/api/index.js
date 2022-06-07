@@ -5,22 +5,23 @@ import axios from "axios";
 
 // HTTP Request & Response 와 관련된 기본설정
 const config = {
-  base_url : "https://jsonplaceholder.typicode.com"
+  base_url: "https://jsonplaceholder.typicode.com"
 }
 
 /************************************************
  API 함수들
  *************************************************/
 
-const fetchUserList = () => {
-  return axios.get(`${config.base_url}/users`);
+export const fetchUserList = async () => {
+  try {
+    const response = await axios.get(`${config.base_url}/users`);
+    return response;
+  } catch (error) {
+    console.log(error);
+  }
+
 }
 
-const fetchPostList = () => {
+export const fetchPostList = () => {
   return axios.get(`${config.base_url}/posts`);
-}
-
-export {
-  fetchUserList,
-  fetchPostList
 }
