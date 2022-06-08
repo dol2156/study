@@ -26,14 +26,20 @@ export const useCommonStore = defineStore("common", {
 
   // actions : state 값을 변경하는 이벤트 로직, 메서드 ( methods )
   actions: {
-    async FETCH_NEWS() {
-      console.log('FETCH_NEWS');
-      try {
-        const response = await fetchNewsList();
-        this.NewsListCpnt.newsList = response.data;
-      } catch (error) {
-        console.log(error);
-      }
+
+    getNewsList() {
+      return fetchNewsList()
+        .then((response) => {
+          // success
+          this.NewsListCpnt.newsList = response.data;
+        })
+        .catch((error) => {
+          // error
+          console.log(error);
+        })
+        .then(() => {
+          // complete
+        });
     },
 
     getAskList() {

@@ -17,13 +17,8 @@ const config = {
  API 함수들
  *************************************************/
 
-export const fetchNewsList = async () => {
-  try {
-    const response = await axios.get(`${config.baseUrl}/news/1.json`);
-    return response;
-  } catch (error) {
-    console.log(error);
-  }
+export const fetchNewsList = () => {
+  return axios.get(`${config.baseUrl}/news/1.json`);
 }
 
 export const fetchAskList = () => {

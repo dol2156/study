@@ -7,7 +7,7 @@ export default {
   name: "NewsView",
   components: { NewsListCpnt },
   created() {
-    this.$commonStore.FETCH_NEWS();
+    this.$commonStore.getNewsList();
   },
 };
 </script>
