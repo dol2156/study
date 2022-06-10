@@ -14,14 +14,14 @@
   </ul>
 </template>
 <script>
-import { fetchPostList, fetchUserList } from "@/api";
+import {fetchPostList, fetchUserList} from "@/api/index";
 export default {
-  name: "App",
+  name : "App",
   data() {
     return {
-      message: "Hello Vue",
-      user_list: [],
-      post_list: [],
+      message : "Hello Vue",
+      user_list : [],
+      post_list : [],
     };
   },
   created() {
@@ -29,7 +29,7 @@ export default {
       const response = await fetchUserList();
       this.user_list = response.data;
     })();
-
+    
     fetchPostList()
       .then((response) => {
         this.post_list = response.data;
@@ -37,7 +37,8 @@ export default {
       .catch((error) => {
         console.log(error);
       })
-      .then(() => {});
+      .then(() => {
+      });
   },
 };
 </script>
