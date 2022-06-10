@@ -1,8 +1,5 @@
 import axios from "axios";
 
-//https://jsonplaceholder.typicode.com/users
-//https://jsonplaceholder.typicode.com/posts
-
 // development 또는 production 구분하기 위한
 const isDevMode = (process.env.NODE_ENV === "development") ? true : false;
 
@@ -23,7 +20,7 @@ export const fetchUserList = async () => {
     if (isDevMode) {
       response = await instance.get('users.json');
     } else {
-      response = await instance.post('REAL_API');
+      response = await instance.get('REAL_API');
     }
     
     return response;
@@ -38,7 +35,7 @@ export const fetchPostList = () => {
   if (isDevMode) {
     response = instance.get('posts.json');
   } else {
-    response = instance.post('REAL_API');
+    response = instance.get('REAL_API');
   }
   
   return response;
