@@ -19,9 +19,13 @@ const instance = axios.create({
 
 export const fetchUserList = async () => {
   try {
-    const path = (isDevMode) ? 'users.json' : 'REAL_API';
+    let response;
+    if (isDevMode) {
+      response = await instance.get('users.json');
+    } else {
+      response = await instance.post('REAL_API');
+    }
     
-    const response = await instance.request(path);
     return response;
   } catch (error) {
     console.log(error);
@@ -30,7 +34,12 @@ export const fetchUserList = async () => {
 }
 
 export const fetchPostList = () => {
-  const path = (isDevMode) ? 'posts.json' : 'REAL_API';
+  let response;
+  if (isDevMode) {
+    response = instance.get('posts.json');
+  } else {
+    response = instance.post('REAL_API');
+  }
   
-  return instance.request(path);
+  return response;
 }
