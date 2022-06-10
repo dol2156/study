@@ -6,15 +6,12 @@ import axios from "axios";
 // development 또는 production 구분하기 위한
 const isDevMode = (process.env.NODE_ENV === "development") ? true : false;
 
-
 // axios 인스턴스 생성
 // https://axios-http.com/kr/docs/req_config
-if(isDevMode) console.log("process.env.VUE_APP_API_URL : ", process.env.VUE_APP_API_URL);
+console.log("process.env.VUE_APP_API_URL : ", process.env.VUE_APP_API_URL);
 const instance = axios.create({
   baseURL : process.env.VUE_APP_API_URL,
 });
-
-
 
 /************************************************
  API 함수들
@@ -22,12 +19,7 @@ const instance = axios.create({
 
 export const fetchUserList = async () => {
   try {
-    let path;
-    if (isDevMode) {
-      path = 'users.json';
-    } else {
-      path = '';
-    }
+    const path = (isDevMode) ? 'users.json' : 'REAL_API';
     
     const response = await instance.request(path);
     return response;
@@ -38,12 +30,7 @@ export const fetchUserList = async () => {
 }
 
 export const fetchPostList = () => {
-  let path;
-  if (isDevMode) {
-    path = 'posts.json';
-  } else {
-    path = '';
-  }
+  const path = (isDevMode) ? 'posts.json' : 'REAL_API';
   
   return instance.request(path);
 }
