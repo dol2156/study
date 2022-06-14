@@ -15,6 +15,7 @@
   <script type="module">
     // Import the functions you need from the SDKs you need
     import {initializeApp} from "https://www.gstatic.com/firebasejs/9.8.3/firebase-app.js";
+    import {getFirestore, collection, getDocs} from 'https://cdnjs.cloudflare.com/ajax/libs/firebase/9.8.3/firebase-firestore-lite.min.js';
     // TODO: Add SDKs for Firebase products that you want to use
     // https://firebase.google.com/docs/web/setup#available-libraries
     
@@ -30,6 +31,29 @@
     
     // Initialize Firebase
     const app = initializeApp(firebaseConfig);
+    
+    // Read
+    const db = getFirestore(app);// database 문법 소환술
+    
+    async function getCities(db) {
+      const productCol = collection(db, 'product');
+      const productSnapshot = await getDocs(productCol);
+      const productList = productSnapshot.docs.map(doc => doc.data());
+      return productList;
+    }
+    
+    getCities(db)
+      .then((response) => {
+        // success
+        console.log(response);
+      })
+      .catch((error) => {
+        // error
+        console.log(error);
+      })
+      .then(() => {
+        // complete
+      });
   </script>
 </head>
 <body>
