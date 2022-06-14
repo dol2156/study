@@ -28,7 +28,7 @@
             isExactActive && 'router-link-exact-active',
           ]"
         >
-          <a class="btnui" :href="href" @click="navigate" target="_blank">{{
+          <a class="btnui" :href="href" @click="navigate">{{
             route.fullPath
           }}</a>
         </li>
@@ -44,7 +44,7 @@
             isExactActive && 'router-link-exact-active',
           ]"
         >
-          <a class="btnui" :href="href" @click="navigate" target="_blank">{{
+          <a class="btnui" :href="href" @click="navigate">{{
             route.fullPath
           }}</a>
         </li>

@@ -1,26 +1,42 @@
 import axios from "axios";
 
-//https://jsonplaceholder.typicode.com/users
-//https://jsonplaceholder.typicode.com/posts
+// development 또는 production 구분하기 위한
+const isDevMode = (process.env.NODE_ENV === "development") ? true : false;
 
-// HTTP Request & Response 와 관련된 기본설정
-const config = {
-  base_url: "https://jsonplaceholder.typicode.com"
-}
+// axios 인스턴스 생성
+// https://axios-http.com/kr/docs/req_config
+console.log("process.env.VUE_APP_API_URL : ", process.env.VUE_APP_API_URL);
+const instance = axios.create({
+  baseURL : process.env.VUE_APP_API_URL,
+});
 
 /************************************************
  API 함수들
  *************************************************/
 
-const fetchUserList = () => {
-  return axios.get(`${config.base_url}/users`);
+export const fetchUserList = async () => {
+  try {
+    let response;
+    if (isDevMode) {
+      response = await instance.get('users.json');
+    } else {
+      response = await instance.get('REAL_API');
+    }
+    
+    return response;
+  } catch (error) {
+    console.log(error);
+  }
+  
 }
 
-const fetchPostList = () => {
-  return axios.get(`${config.base_url}/posts`);
-}
-
-export {
-  fetchUserList,
-  fetchPostList
+export const fetchPostList = () => {
+  let response;
+  if (isDevMode) {
+    response = instance.get('posts.json');
+  } else {
+    response = instance.get('REAL_API');
+  }
+  
+  return response;
 }

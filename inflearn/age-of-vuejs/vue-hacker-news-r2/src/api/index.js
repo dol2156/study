@@ -10,27 +10,21 @@ Jobs	https://api.hnpwa.com/v0/jobs/1.json
 
 // HTTP Request & Response 와 관련된 기본설정
 const config = {
-  baseUrl : "https://api.hnpwa.com/v0"
+  baseUrl: "https://api.hnpwa.com/v0"
 }
 
 /************************************************
  API 함수들
  *************************************************/
 
-const fetchNewsList = () => {
+export const fetchNewsList = () => {
   return axios.get(`${config.baseUrl}/news/1.json`);
 }
 
-const fetchAskList = () => {
+export const fetchAskList = () => {
   return axios.get(`${config.baseUrl}/ask/1.json`);
 }
 
-const fetchJobsList = () => {
+export const fetchJobsList = () => {
   return axios.get(`${config.baseUrl}/jobs/1.json`);
-}
-
-export default {
-  fetchNewsList,
-  fetchAskList,
-  fetchJobsList,
 }

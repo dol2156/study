@@ -1,5 +1,5 @@
 {
-  "name": "vue-api",
+  "name": "vue-input-component",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -8,9 +8,8 @@
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
-    "axios": "^0.27.2",
     "core-js": "^3.8.3",
-    "package.json": "^2.0.1",
+    "uuid": "^8.3.2",
     "vue": "^3.2.13"
   },
   "devDependencies": {

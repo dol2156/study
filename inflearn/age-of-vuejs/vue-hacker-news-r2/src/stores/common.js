@@ -1,33 +1,34 @@
-import {defineStore} from "pinia";
-import api from '@/api/index';
+import { defineStore } from "pinia";
+import {
+  fetchNewsList,
+  fetchAskList,
+  fetchJobsList,
+} from '@/api/index';
 
 export const useCommonStore = defineStore("common", {
-  
+
   // state : 여러 컴포넌트에 공유되는 데이터 ( data )
-  state : () => ({
-    num : 100,
-    NewsListCpnt : {
-      newsList : [],
-      askList : [],
-      jobsList : [],
+  state: () => ({
+    num: 100,
+    NewsListCpnt: {
+      newsList: [],
+      askList: [],
+      jobsList: [],
     },
   }),
-  
+
   // getters : 연산된 state 값을 접근하는 속성 ( computed )
-  getters : {
+  getters: {
     doubleCount(state) {
       return state.num * 2;
     }
   },
-  
+
   // actions : state 값을 변경하는 이벤트 로직, 메서드 ( methods )
-  actions : {
-    increment() {
-      console.log('increment');
-      this.num++;
-    },
+  actions: {
+
     getNewsList() {
-      api.fetchNewsList()
+      return fetchNewsList()
         .then((response) => {
           // success
           this.NewsListCpnt.newsList = response.data;
@@ -40,8 +41,9 @@ export const useCommonStore = defineStore("common", {
           // complete
         });
     },
+
     getAskList() {
-      api.fetchAskList()
+      return fetchAskList()
         .then((response) => {
           // success
           this.NewsListCpnt.askList = response.data;
@@ -54,8 +56,10 @@ export const useCommonStore = defineStore("common", {
           // complete
         });
     },
+
+
     getJobsList() {
-      api.fetchJobsList()
+      return fetchJobsList()
         .then((response) => {
           // success
           this.NewsListCpnt.jobsList = response.data;
@@ -69,5 +73,5 @@ export const useCommonStore = defineStore("common", {
         });
     },
   },
-  
+
 });

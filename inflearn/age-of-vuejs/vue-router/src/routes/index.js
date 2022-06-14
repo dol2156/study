@@ -18,6 +18,15 @@ const routes = [
     name : "NewsView",
     component : NewsView,
   },
+  {
+    path : "/404",
+    name : "PageNotFoundView",
+    component : () => import('@/views/PageNotFoundView'),// 코드 스플리팅 - SPA 방식에서 오직 한페이지에 필요한 리소스만 필요한 경우 사용
+  },
+  {
+    path : "/:catchAll(.*)",
+    redirect : '/404',
+  }
 ];
 
 const router = createRouter({

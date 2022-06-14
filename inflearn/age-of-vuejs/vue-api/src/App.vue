@@ -14,7 +14,7 @@
   </ul>
 </template>
 <script>
-import {fetchPostList, fetchUserList} from "@/api";
+import {fetchPostList, fetchUserList} from "@/api/index";
 export default {
   name : "App",
   data() {
@@ -25,18 +25,10 @@ export default {
     };
   },
   created() {
-    // 인스턴스가 생성된 후 동기적으로 호출
-    fetchUserList()
-      .then((response) => {
-        this.user_list = response.data;
-      })
-      .catch((error) => {
-        // console.log('에러 핸들링');
-        console.log(error);
-      })
-      .then(() => {
-        // console.log('항상 실행되는 영역');
-      });
+    (async () => {
+      const response = await fetchUserList();
+      this.user_list = response.data;
+    })();
     
     fetchPostList()
       .then((response) => {
@@ -47,9 +39,7 @@ export default {
       })
       .then(() => {
       });
-    
   },
-}
+};
 </script>
-<style>
-</style>
+<style></style>
