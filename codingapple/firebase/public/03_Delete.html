@@ -47,6 +47,27 @@
           </div>
         </nav>
       </header>
+      <main>
+        <form id="my_form" action="/">
+          <div>
+            <select name="collection" style="width: 100%">
+              <option value="webtoon">webtoon</option>
+            </select>
+          </div>
+          <br />
+          <div>
+            <input name="title" type="text" placeholder="웹툰이름" style="width: 100%" value="나 혼자만 레벨업" />
+          </div>
+          <br />
+          <div>
+            <input name="chapter" type="text" placeholder="회차" style="width: 100%" value="10" />
+          </div>
+          <br />
+          <div>
+            <button type="submit">제출</button>
+          </div>
+        </form>
+      </main>
     </div>
 
     <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-app.js"></script>
@@ -71,10 +92,30 @@
         .get()
         .then((response) => {
           response.forEach((doc) => {
-            console.log(`${doc.id}`);
             console.log(doc.data());
           });
         });
+    </script>
+
+    <script>
+      $("#my_form").on("submit", (evt) => {
+        evt.preventDefault();
+        const form = document.querySelector("#my_form");
+        const collection = form.collection.value;
+        const title = form.title.value;
+
+        console.log(title);
+
+        db.collection(collection)
+          .doc(title)
+          .delete()
+          .then(() => {
+            console.log("Document successfully deleted!");
+          })
+          .catch((error) => {
+            console.error("Error removing document: ", error);
+          });
+      });
     </script>
   </body>
 </html>
