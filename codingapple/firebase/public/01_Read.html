@@ -71,7 +71,7 @@
         .get()
         .then((response) => {
           response.forEach((doc) => {
-            console.log(`${doc.id}`);
+            console.log(doc.id);
             console.log(doc.data());
           });
         });
