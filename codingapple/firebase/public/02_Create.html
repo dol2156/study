@@ -105,14 +105,33 @@
         const title = form.title.value;
         const chapter = form.chapter.value;
 
+        // https://firebase.google.com/docs/firestore/manage-data/add-data?hl=ko&authuser=0#set_a_document
+        // set()
+        /*
         db.collection(collection)
           .doc(title)
-          .set({ chapter: chapter })
+          .set({ 
+            chapter: chapter 
+          })
           .then(() => {
             console.log("Document successfully written!");
           })
           .catch((error) => {
             console.log(error);
+          });
+        */
+
+        // add()
+        db.collection(collection)
+          .add({
+            title: title,
+            chapter: chapter,
+          })
+          .then((docRef) => {
+            console.log("Document written with ID: ", docRef.id);
+          })
+          .catch((error) => {
+            console.error("Error adding document: ", error);
           });
       });
     </script>
