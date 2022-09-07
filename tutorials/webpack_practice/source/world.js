@@ -1,2 +1,2 @@
-var word = 'Wrold';
+var word = 'Wrold!!';
 export default word;
