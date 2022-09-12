@@ -7,5 +7,11 @@
 <body>
   <h1>Webpack Example</h1>
   <div id="root"></div>
+  <script type="module">
+      import hello_txt from "./hello.js";
+      import world_txt from "./world.js";
+
+      document.querySelector('#root').innerHTML = hello_txt + ' ' + world_txt;
+  </script>
 </body>
 </html>
