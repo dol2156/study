@@ -1,4 +1,5 @@
 const path = require("path");
+const HtmlWebpackPlugin = require("html-webpack-plugin");
 
 module.exports = {
   // 선택한 모드를 통해 webpack이 알맞은 내장 최적화를 사용
@@ -7,7 +8,11 @@ module.exports = {
   // ./src 를 기본으로 함
   // 애플리케이션이 여기에서 실행되며
   // webpack이 번들링을 시작
-  entry: "./src/index.js", // string | object | array
+  //entry: "./src/index.js", // string | object | array
+  entry: {
+    index: "./src/index.js",
+    about: "./src/about.js",
+  },
 
   // webpack이 결과를 내보내는 방법과 관련된 옵션
   output: {
@@ -16,7 +21,7 @@ module.exports = {
     path: path.resolve(__dirname, "public"), // string (기본값)
 
     // the filename template for entry chunks
-    filename: "main.js", // string (기본값)
+    filename: "[name]_bundle.js", // string (기본값)
   },
   module: {
     rules: [
@@ -26,4 +31,5 @@ module.exports = {
       },
     ],
   },
+  plugins: [new HtmlWebpackPlugin()],
 };

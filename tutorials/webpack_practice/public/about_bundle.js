@@ -110,13 +110,13 @@ eval("\n\n/* istanbul ignore next  */\nfunction styleTagTransform(css, styleElem
 
 /***/ }),
 
-/***/ "./src/index.js":
+/***/ "./src/about.js":
 /*!**********************!*\
-  !*** ./src/index.js ***!
+  !*** ./src/about.js ***!
   \**********************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _css_common_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./css/common.css */ \"./src/css/common.css\");\n/* harmony import */ var _js_hello_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./js/hello.js */ \"./src/js/hello.js\");\n/* harmony import */ var _js_world_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./js/world.js */ \"./src/js/world.js\");\n\r\n\r\n\r\n\r\ndocument.querySelector('#root').innerHTML = _js_hello_js__WEBPACK_IMPORTED_MODULE_1__[\"default\"] + ' ' + _js_world_js__WEBPACK_IMPORTED_MODULE_2__[\"default\"];\n\n//# sourceURL=webpack://webpack_practice/./src/index.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _css_common_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./css/common.css */ \"./src/css/common.css\");\n/* harmony import */ var _js_hello_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./js/hello.js */ \"./src/js/hello.js\");\n/* harmony import */ var _js_world_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./js/world.js */ \"./src/js/world.js\");\n\r\n\r\n\r\n\r\n\r\ndocument.querySelector('#root').innerHTML = _js_world_js__WEBPACK_IMPORTED_MODULE_2__[\"default\"] + ' ' + _js_hello_js__WEBPACK_IMPORTED_MODULE_1__[\"default\"];\n\n//# sourceURL=webpack://webpack_practice/./src/about.js?");
 
 /***/ }),
 
@@ -217,7 +217,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
 /******/ 	// startup
 /******/ 	// Load entry module and return exports
 /******/ 	// This entry module can't be inlined because the eval devtool is used.
-/******/ 	var __webpack_exports__ = __webpack_require__("./src/index.js");
+/******/ 	var __webpack_exports__ = __webpack_require__("./src/about.js");
 /******/ 	
 /******/ })()
 ;
