@@ -31,5 +31,16 @@ module.exports = {
       },
     ],
   },
-  plugins: [new HtmlWebpackPlugin()],
+  plugins: [
+    new HtmlWebpackPlugin({
+      template: "./src/index.html",
+      filename: "./index.html",
+      chunks:['index'],
+    }),
+    new HtmlWebpackPlugin({
+      template: "./src/about.html",
+      filename: "./about.html",
+      chunks:['about'],
+    }),
+  ],
 };
