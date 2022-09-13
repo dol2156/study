@@ -3,7 +3,7 @@ const path = require("path");
 module.exports = {
   // 선택한 모드를 통해 webpack이 알맞은 내장 최적화를 사용
   mode: "development", // "production" | "development" | "none"
-  
+
   // ./src 를 기본으로 함
   // 애플리케이션이 여기에서 실행되며
   // webpack이 번들링을 시작
@@ -17,5 +17,13 @@ module.exports = {
 
     // the filename template for entry chunks
     filename: "main.js", // string (기본값)
+  },
+  module: {
+    rules: [
+      {
+        test: /\.css$/i,
+        use: ["style-loader", "css-loader"],
+      },
+    ],
   },
 };
