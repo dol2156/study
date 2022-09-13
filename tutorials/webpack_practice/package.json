@@ -15,6 +15,7 @@
     "clone-deep": "^4.0.1",
     "colorette": "^2.0.19",
     "commander": "^2.20.3",
+    "concurrently": "^7.4.0",
     "cross-spawn": "^7.0.3",
     "css-loader": "^6.7.1",
     "cssesc": "^3.0.0",
@@ -109,7 +110,8 @@
     "webpack-cli": "^4.10.0"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "concurrently \"rm -R ./public/\" \"npx webpack\"",
+    "test": "npx webpack"
   },
   "author": "",
   "license": "ISC"
