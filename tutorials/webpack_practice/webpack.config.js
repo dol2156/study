@@ -2,7 +2,7 @@ const path = require("path");
 
 module.exports = {
   // 선택한 모드를 통해 webpack이 알맞은 내장 최적화를 사용
-  mode: "production", // "production" | "development" | "none"
+  mode: "development", // "production" | "development" | "none"
   
   // ./src 를 기본으로 함
   // 애플리케이션이 여기에서 실행되며
