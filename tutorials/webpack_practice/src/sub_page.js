@@ -1,0 +1,1 @@
+console.log('[22-09-18 20:03:28] [sub_page.js:1]');
