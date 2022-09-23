@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta id="viewport" name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no">
+  <link rel="icon" href="data:,">
+  <title>index.html</title>
+</head>
+<body>
+<h1>채팅 페이지</h1>
+<button type="button" id="send" onclick="socket.send('HI!');">메세지 보내기</button>
+<script>
+  // 웹소켓 열어달라고 서버에게 부탁하는 코드
+  let socket = new WebSocket("ws://localhost:8081");
+</script>
+</body>
+</html>
