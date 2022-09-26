@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta id="viewport" name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no">
+  <link rel="icon" href="data:,">
+  <title>03_async_await.html</title>
+</head>
+<body>
+<script>
+  (() => {
+    function timer(_time) {
+      return new Promise((resolve, reject) => {
+        setTimeout(() => {
+          resolve(_time);
+        }, _time);
+      });
+    }
+    
+    /*
+    console.log('start');
+    console.time('time');
+    timer(1000)
+      .then((response) => {
+        console.timeLog("time");
+        return timer(response + 1000);
+      })
+      .then((response) => {
+        console.timeLog("time");
+        return timer(response + 1000);
+      })
+      .then((response) => {
+        console.timeEnd("time");
+        console.log('end');
+      });
+     */
+    
+    /**
+     * 참고
+     * Uncaught SyntaxError: await is only valid in async functions and the top level bodies of modules
+     * Uncatched SyntaxError: wait는 비동기 함수 및 모듈의 최상위 본문에서만 유효합니다.
+     * */
+    
+    // 조금 더 깔끔 하게
+    async function run(){
+      console.log('start');
+      console.time('run');
+  
+      const time1 = await timer(1000);
+      console.timeLog('run');
+      console.log("time1 : ", time1);
+  
+      const time2 = await timer(1000 + time1);
+      console.timeLog('run');
+      console.log("time2 : ", time2);
+  
+      const time3 = await timer(1000 + time2);
+      console.timeEnd('run');
+      console.log("time3 : ", time3);
+  
+      console.log('end');
+    }
+    
+    async function parentRun(){
+      console.log('parent start');
+      await run();
+      console.log('parent end');
+    }
+    parentRun();
+    
+  })();
+</script>
+</body>
+</html>
