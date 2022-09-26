@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta id="viewport" name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no">
+  <link rel="icon" href="data:,">
+  <title>04_new_promise.html</title>
+</head>
+<body>
+<script>
+  (() => {
+    function job1() {
+      return new Promise((resolve, reject) => {
+        
+        const seq = Date.now();
+        const url = `https://jsonplaceholder.typicode.com/users?_delay=3000, v=${seq}`;
+        fetch(url)
+          .then(response => {
+            resolve(response.json());
+          })
+        
+      });
+    }
+    
+    function job2() {
+      return new Promise((resolve, reject) => {
+        
+        const seq = Date.now();
+        const url = `https://jsonplaceholder.typicode.com/users?_delay=1000, v=${seq}`;
+        fetch(url)
+          .then(response => {
+            resolve(response.json());
+          })
+      });
+    }
+    
+    async function run() {
+      console.log('start');
+      console.time('run');
+      console.timeLog('run');
+      
+      await job1()
+        .then(response => {
+          console.log('job1', response);
+        })
+      
+      console.timeLog('run');
+      
+      await job2()
+        .then(response => {
+          console.log('job2', response);
+        })
+      
+      console.timeEnd('run');
+      console.log('end');
+    }
+    run();
+  })();
+</script>
+</body>
+</html>
