@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta id="viewport" name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no">
+  <link rel="icon" href="data:,">
+  <title>05_promise_all_race.html</title>
+</head>
+<body>
+<script>
+  (() => {
+    function getUser(_id) {
+      return new Promise((resolve, reject) => {
+        const fetchParam = {
+          id : _id,
+          ver : Date.now(),
+        };
+        const fetchQueryString = new URLSearchParams(fetchParam).toString();
+        const fetchUrl = 'https://jsonplaceholder.typicode.com/users?' + fetchQueryString;
+        console.log("fetchUrl : ", fetchUrl);
+        fetch(fetchUrl)
+          .then(_response => {
+            return _response.json();
+          })
+          .then(_data => {
+            resolve(_data);
+          });
+      });
+    }
+    
+    // Promise.all 는 전달 받은 비동기 메서드가 모두 결과값을 반환했을때 resolve 한다.
+    console.time('Promise.all');
+    Promise.all([
+      getUser(1),
+      getUser(2),
+      getUser(3),
+    ])
+      .then(response => {
+        console.log('Promise.all End');
+        response.forEach((el, i) => {
+          console.log(el[0]);
+        });
+        console.timeEnd('Promise.all');
+      });
+  
+  
+    // Promise.race 는 전달 받은 비동기 메서드중 가장 먼저 결과값을 반환한 메서드 기준으로 resolve 한다.
+    console.time('Promise.race');
+    Promise.race([
+      getUser(1),
+      getUser(2),
+      getUser(3),
+    ])
+      .then(response => {
+        console.log('Promise.race End');
+        console.log(response[0]);
+        console.timeEnd('Promise.race');
+      });
+    
+  })();
+</script>
+</body>
+</html>
