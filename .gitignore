@@ -1,0 +1,10 @@
+### KSM template
+# IntelliJ project files
+.idea
+*.iml
+
+# vscode project files
+.vscode
+
+#
+node_modules
