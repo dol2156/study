@@ -1,4 +1,21 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-body{ background:tomato; }
+html, body, div, h1, h2, h3, h4, h5, h6, th, td, input, textarea, select, button{ font-family:D2Coding, "맑은고딕", "Malgun Gothic", Tahoma, Dotum, "돋움", Arial, sans-serif; }
+body{ background:#ffffd4; }
+#page{ padding:10px; }
+h1{ font-size:36px; font-weight:bold; }
+h2{ font-size:30px; font-weight:bold; }
+h3{ font-size:24px; font-weight:bold; margin-top:10px; }
+a{ color:cornflowerblue; }
+a:hover{ text-decoration:underline; }
+/**/
+section{ outline:1px dashed red; box-shadow:0px 0px 10px cornflowerblue; }
+section{ padding:10px; background:white; }
+section + section{ margin-top:10px; }
+.item{
+  @apply bg-red-200 outline outline-1 outline-dashed outline-red-600;
+}
+.item + .item{
+  margin-top:10px;
+}
