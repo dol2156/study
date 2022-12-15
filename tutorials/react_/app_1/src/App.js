@@ -2,14 +2,9 @@ import './App.css';
 
 import { Routes, Route, Link } from 'react-router-dom';
 import MainLayout from './components/layout/MainLayout';
+import Home from './pages/Home';
 
-function Home() {
-  return (
-    <div>
-      <h2>Home</h2>
-    </div>
-  )
-}
+
 
 function Topics() {
   return (
