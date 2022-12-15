@@ -33,12 +33,34 @@
   </style>
 </head>
 <body>
-<section>
-  <button class="rounded-full bg-sky-500 py-2 px-5 text-sm font-semibold leading-5 text-white hover:bg-sky-700">Save changes</button>
-</section>
-<section>
-  <button type="button" class="rounded-full bg-violet-500 px-5 py-2 text-sm font-semibold leading-5 text-white hover:bg-violet-600 focus:outline-none focus:ring focus:ring-violet-300 active:bg-violet-700">Save changes</button>
-</section>
+<div class="not-prose relative bg-slate-50 rounded-xl overflow-hidden dark:bg-slate-800/25">
+  <div class="absolute inset-0 bg-grid-slate-100 [mask-image:linear-gradient(0deg,#fff,rgba(255,255,255,0.6))] dark:bg-grid-slate-700/25 dark:[mask-image:linear-gradient(0deg,rgba(255,255,255,0.1),rgba(255,255,255,0.5))]" style="background-position: 10px 10px;"></div>
+  <div class="relative rounded-xl overflow-auto p-8">
+    <div class="grid place-items-center">
+      <button class="bg-sky-500 hover:bg-sky-700 px-5 py-2 text-sm leading-5 rounded-full font-semibold text-white">
+        Save changes
+      </button>
+    </div>
+  </div>
+  <div class="absolute inset-0 pointer-events-none border border-black/5 rounded-xl dark:border-white/5"></div>
+</div>
+<div class="not-prose relative bg-slate-50 rounded-xl overflow-hidden dark:bg-slate-800/25">
+  <div class="absolute inset-0 bg-grid-slate-100 [mask-image:linear-gradient(0deg,#fff,rgba(255,255,255,0.6))] dark:bg-grid-slate-700/25 dark:[mask-image:linear-gradient(0deg,rgba(255,255,255,0.1),rgba(255,255,255,0.5))]" style="background-position: 10px 10px;"></div>
+  <div class="relative rounded-xl overflow-auto p-8">
+    <div class="grid place-items-center">
+      <button class="
+      bg-violet-500
+      hover:bg-violet-600
+      focus:outline-none focus:ring focus:ring-violet-300
+      active:bg-violet-700
+      px-5 py-2 text-sm leading-5 rounded-full font-semibold text-white"
+              type="button">
+        Save changes
+      </button>
+    </div>
+  </div>
+  <div class="absolute inset-0 pointer-events-none border border-black/5 rounded-xl dark:border-white/5"></div>
+</div>
 <section>
   <ul role="list" class="divide-y divide-slate-200 p-6">
     <li class="flex py-4 first:pt-0 last:pb-0">
