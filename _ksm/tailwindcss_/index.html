@@ -1,0 +1,170 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Include Handlebars from a CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/handlebars@latest/dist/handlebars.js"></script>
+  <script>
+    Handlebars.registerHelper('times', function (n, block) {
+      var accum = '';
+      for (var i = 0; i < n; ++i)
+        accum += block.fn(i);
+      return accum;
+    });
+  </script>
+  <script>
+    const MarkupUtil = {};
+    
+    /**
+     * <script type="text/x-handlebars-template"> 에 입력된 템플릿 DOM 태그들을 _renderData 와 합성하여 DOM 결과물을 화면에 출력한다.
+     * @param _renderData
+     * https://handlebarsjs.com/
+     */
+    MarkupUtil.hb = function (_renderData) {
+      const $me = document.currentScript;
+      if ($me.tagName != 'SCRIPT') return;
+      
+      const _template = $me.previousElementSibling;
+      if (!_template) return;
+      
+      //Grab the inline template
+      const template = _template.innerHTML;
+      
+      //Compile the template
+      const compiled_template = Handlebars.compile(template);
+      
+      //Render the data into the template
+      const rendered = compiled_template(_renderData);
+      
+      // string to DOM
+      const convertor = document.createElement('template');
+      convertor.innerHTML = rendered.trim();
+      
+      const childNodes = convertor.content.childNodes;
+      childNodes.forEach((_node, _index) => {
+        _template.before(_node);
+      });
+      
+      //_template.remove();
+    }
+  </script>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style type="text/tailwindcss">
+  </style>
+</head>
+<body style="padding:10px;">
+
+<div class="grid" style="grid-template-columns:100px 100px 100px">
+  <div class="border">1</div>
+  <div class="border">2</div>
+  <div class="border">3</div>
+  <div class="border">4</div>
+  <div class="border">5</div>
+  <div class="border">6</div>
+  <div class="border">7</div>
+  <div class="border">8</div>
+</div>
+<br>
+<div id="container">
+  <div>Item</div>
+  <div>Item with more text in it.</div>
+  <div>Flexible item</div>
+</div>
+<style>
+  #container {
+    display: grid;
+    grid-template-columns: min-content min-content 1fr;
+    grid-gap: 5px;
+    box-sizing: border-box;
+    height: 200px;
+    width: 100%;
+    background-color: #8cffa0;
+    padding: 10px;
+  }
+  
+  #container > div {
+    background-color: #8ca0ff;
+    padding: 5px;
+  }
+</style>
+<br>
+<div class="flex h-screen" style="outline:1px dashed red; box-shadow:0px 0px 10px cornflowerblue;">
+  <div style="outline:1px dashed red; box-shadow:0px 0px 10px cornflowerblue;" class="basis-[200px]">aside</div>
+  <main style="outline:1px dashed red; box-shadow:0px 0px 10px cornflowerblue;" class="main grow">main</main>
+</div>
+<br>
+<script type="text/x-handlebars-template">
+  <div class="flex">
+    {{#times 3}}
+      <div class="bg-red-{{this}}00 w-[40px] h-[40px] border border-[red] flex items-center justify-center box-border">{{this}}</div>
+    {{/times}}
+  </div>
+</script>
+<script>
+  MarkupUtil.hb();
+</script>
+<br>
+<script type="text/x-handlebars-template">
+  <div class="flex flex-row flex-wrap">
+    {{#times 30}}
+    <div class="bg-red-{{this}}00 w-[40px] h-[40px] border border-[red] flex items-center justify-center box-border">{{this}}</div>
+    {{/times}}
+  </div>
+</script>
+<script>
+  MarkupUtil.hb();
+</script>
+
+<div class="mt-2 flex gap-4 text-white text-sm font-bold font-mono leading-6 bg-stripes-blue rounded-lg">
+  <div class="p-4 flex-none w-14 h-14 rounded-lg flex items-center justify-center bg-blue-300 dark:bg-blue-800 dark:text-blue-500">01</div>
+  <div class="p-4 w-24 sm:w-64 rounded-lg flex items-center justify-center bg-blue-500 shadow-lg">02</div>
+  <div class="p-4 w-14 sm:w-32 rounded-lg flex items-center justify-center bg-blue-500 shadow-lg">03</div>
+</div>
+
+<div class="flex flex-row font-bold font-mono leading-6 space-x-4 text-sm text-white">
+  <div class="basis-1/2 hover:basis-1/2 h-14 rounded-lg flex items-center justify-center bg-fuchsia-500 shadow-lg">01</div>
+  <div class="basis-1/4 h-14 rounded-lg flex items-center justify-center bg-fuchsia-500 shadow-lg">02</div>
+  <div class="basis-1/2 h-14 rounded-lg flex items-center justify-center bg-fuchsia-500 shadow-lg">03</div>
+</div>
+
+<div class="space-y-2">
+  <div class="border">1</div>
+  <div class="border">2</div>
+  <div class="border">3</div>
+  <div class="border">4</div>
+</div>
+
+<script type="text/x-handlebars-template">
+  <div class="columns-2">
+    <p>Well, let me tell you something, ...</p>
+    <p class="break-after-column">Sure, go ahead, laugh...</p>
+    <p>Maybe we can live without...</p>
+    <p>Look. If you think this is...</p>
+  </div>
+</script>
+<script>
+  MarkupUtil.hb({
+    people : [
+      {name : "Yehuda Katz", email : "1@mail.com"},
+      {name : "Alan Johnson", email : "2@mail.com"},
+      {name : "Charles Jolley", email : "33333333333333333333333@mail.com"},
+      {name : "강석민", email : "4@mail.com"},
+      {name : "강민채", email : "5@mail.com"},
+      {name : "김나은", email : "6@mail.com"},
+    ],
+  });
+</script>
+
+<div class="[&_p]:mt-4">
+  <p>Lorem ipsum...</p>
+  <ul>
+    <li>
+      <p>Lorem ipsum...</p>
+    </li>
+    <!-- ... -->
+  </ul>
+</div>
+
+</body>
+</html>
