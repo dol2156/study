@@ -1,6 +1,9 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: false,
+  images: {
+    domains: ['gifpng.com', 'source.unsplash.com'],
+  },
   // async rewrites() {
   //   return [
   //     {
