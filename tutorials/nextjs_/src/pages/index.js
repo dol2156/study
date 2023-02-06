@@ -2,6 +2,8 @@ import Link from "next/link";
 import axios from "axios";
 import {Fragment, useEffect, useState} from "react";
 import Image from "next/image";
+import JSZip from "jszip";
+import {saveAs} from 'file-saver';
 
 function PageMain({title}) {
   
@@ -9,9 +11,29 @@ function PageMain({title}) {
   const image_list = us_image_list[0];
   const setImageList = us_image_list[1];
   
-  const [image_count, setImageCount] = useState(3);
+  const [image_base_64_list, setImageBase64List] = useState([]);
+  
+  const [image_count, setImageCount] = useState(2);
   const [image_width, setImageWidth] = useState(560);
   const [image_height, setImageHeight] = useState(315);
+  
+  function downloadImage() {
+    console.log("image_base_64_list : ", image_base_64_list);
+    
+    const zip = new JSZip();
+    
+    image_base_64_list.forEach((obj, idx) => {
+      console.log("idx : ", idx);
+      const imgData = obj;
+      zip.file(`img-${idx}.jpg`, imgData, {base64 : true});
+    });
+    
+    zip.generateAsync({type:"blob"})
+      .then(function(content) {
+        // see FileSaver.js
+        saveAs(content, "images.zip");
+      });
+  }
   
   useEffect(() => {
     // mount
@@ -21,7 +43,10 @@ function PageMain({title}) {
   async function createImage() {
     console.log('createImage');
     
+    setImageBase64List([]);
+    
     const result = [];
+    const arr = [];
     const count = image_count;
     const width = image_width;
     const height = image_height;
@@ -34,10 +59,13 @@ function PageMain({title}) {
       console.log(i);
       const seq = Date.now();
       const url = `https://source.unsplash.com/${width}x${height}/?nature,water&ver=${seq}`;
-      let imageString = await loadImage(url, result);
-      result.push(imageString);
+      let base64Str = await loadImage(url, result);
+      setImageBase64List(ori => [...ori, base64Str]);
+      let imgStr = "data:image/png;base64," + base64Str;
+      result.push(imgStr);
       ++i;
     }
+    
     setImageList(result);
   }
   
@@ -67,15 +95,15 @@ function PageMain({title}) {
           console.log("isOverlap : ", isOverlap);
           if (isOverlap) {
             console.log('중복 발생 재생성');
-            let imageString = await loadImage(url, result);
-            resolve(imageString);
+            resolve(await loadImage(url, result));
           } else {
-            resolve(imgString);
+            resolve(base64String);
           }
           
         })
-        .catch((error) => {
+        .catch(async (error) => {
           console.log(error);
+          resolve(await loadImage(url, result));
         })
         .then(() => {
         });
@@ -103,6 +131,11 @@ function PageMain({title}) {
           // console.log(evt.target);
           createImage();
         }}>생성
+        </button>
+        <button onClick={(evt) => {
+          // console.log(evt.target);
+          downloadImage();
+        }}>다운로드
         </button>
       </div>
       <div>
