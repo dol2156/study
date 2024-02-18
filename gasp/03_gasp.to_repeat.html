@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no"
+    />
+    <link rel="icon" href="data:," />
+    <title>01_Basic_Tween.html</title>
+    <script src="/lib/gsap.min.js"></script>
+    <style>
+      body {
+        background: gray;
+      }
+      .orange {
+        width: 100px;
+        height: 100px;
+        background: orange;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="box orange"></div>
+    <script>
+      gsap.to('.orange', {
+        delay: 1, // 첫시작 지연 시간
+        x: 700,
+        y: 400,
+        scale: 3,
+        rotation: 360,
+        duration: 1,
+        // repeat: -1, // 무한
+        repeat: 4, // 1 + 4 = 5 번
+        repeatDelay: 1,
+        yoyo: true,
+      });
+    </script>
+  </body>
+</html>

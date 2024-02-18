@@ -8,7 +8,7 @@
     />
     <link rel="icon" href="data:," />
     <title>01_Basic_Tween.html</title>
-    <script src="https://unpkg.co/gsap@3/dist/gsap.min.js"></script>
+    <script src="/lib/gsap.min.js"></script>
     <style>
       body {
         background: gray;
@@ -21,6 +21,13 @@
     </style>
   </head>
   <body>
-    <div class="orange"></div>
+    <div class="box orange"></div>
+    <script>
+      gsap.from('.orange', {
+        delay: 1,
+        x: 400,
+        y: 400,
+      });
+    </script>
   </body>
 </html>
