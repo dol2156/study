@@ -22,19 +22,51 @@
   <body>
     <div>
       <div class="box" style="background-color: orange"></div>
-      <br/>
+      <br />
       <div class="box" style="background-color: pink"></div>
-      <br/>
+      <br />
       <div class="box" style="background-color: red"></div>
+      <br />
+      <div class="box" style="background-color: blue"></div>
+    </div>
+    <div>
+      <button onclick="onResume()">play</button>
+      <button onclick="onPause()">pause</button>
+      <button onclick="onResume()">resume</button>
+      <button onclick="onReverse()">reverse</button>
+      <button onclick="onRestart()">restart</button>
     </div>
     <script>
-      gsap.to('.box', {
+      const tween = gsap.to('.box', {
         delay: 1, // 첫시작 지연 시간
         x: '50vw',
         duration: 1,
         ease: 'power4.out',
-        stagger: 0.2, // 0.2 초 간격으로 순차 진행
+        stagger: 0.2,
+        repeat: -1,
+        yoyo: true,
       });
+
+      function onPlay() {
+        tween.play();
+      }
+
+      function onPause() {
+        tween.pause();
+      }
+
+      function onResume() {
+        tween.resume();
+      }
+      
+      function onReverse(){
+        tween.reverse();
+      }
+      
+      function onRestart(){
+        tween.restart();
+      }
+      
     </script>
   </body>
 </html>
