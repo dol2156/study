@@ -1,4 +1,4 @@
-GSDevTools.create();
+// GSDevTools.create();
 
 $(function () {
   const $stage = $(`.stage`);
@@ -8,8 +8,11 @@ $(function () {
 
   gsap.from($H1.find('.char'), {
     //y: 'random(-100,100)',
-    y: gsap.utils.wrap([100, -100]),// 지그재그 순환하여 넣어줌
+    y: gsap.utils.wrap([100, -100]), // 지그재그 순환하여 넣어줌
     opacity: 0,
-    stagger: 0.02,
+    stagger: {
+      each: 0.02,
+      from: 'random',
+    },
   });
 });
