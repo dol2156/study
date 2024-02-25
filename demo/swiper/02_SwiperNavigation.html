@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <script src="/assets/lib/include.js"></script>
+    <script>
+      Include(`/page/demo/swiper/meta.html`);
+    </script>
+  </head>
+  <body>
+    <section>
+      <script type="text/x-handlebars-template">
+        <div id='Swiper' class='RR swiper max-w-[76.8rem]'>
+          <div class='swiper-wrapper'>
+            {{#LOOP 5}}
+              <div class='RR swiper-slide'>
+                <article class='p-4 bg-white'>
+                  <figure>
+                    <img
+                      class='w-full'
+                      src='https://gifpng.com/560x315'
+                      alt=''
+                    />
+                  </figure>
+                  <div class='text-center'>Slide {{index}}</div>
+                </article>
+              </div>
+            {{/LOOP}}
+          </div>
+          <div class='swiper-button-next'></div>
+          <div class='swiper-button-prev'></div>
+        </div>
+      </script>
+      <script>
+        Handlebars.write();
+        (() => {
+          const swiper = new Swiper(`#Swiper`, {
+            navigation: {
+              nextEl: '.swiper-button-next',
+              prevEl: '.swiper-button-prev',
+            },
+          });
+        })();
+      </script>
+    </section>
+  </body>
+</html>

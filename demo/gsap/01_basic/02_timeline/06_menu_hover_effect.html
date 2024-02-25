@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no"
+    />
+    <link rel="icon" href="data:," />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="/assets/lib/gsap/gsap.min.js"></script>
+    <style>
+      body {
+        background: black;
+        font-weight: bold;
+      }
+
+      ul {
+        font-size: 30px;
+        color: gray;
+      }
+      li {
+        display: flex;
+        align-items: center;
+      }
+      a {
+        text-decoration: none;
+      }
+
+      .dash {
+        width: 15px;
+        height: 4px;
+        background: #3e3e3e;
+        margin-right: 10px;
+        /*opacity: 0;*/
+      }
+    </style>
+  </head>
+  <body>
+    <ul>
+      <li class="item">
+        <div class="dash"></div>
+        <a href="/" class="text">Home</a>
+      </li>
+      <li class="item">
+        <div class="dash"></div>
+        <a href="/" class="text">About</a>
+      </li>
+      <li class="item">
+        <div class="dash"></div>
+        <a href="/" class="text">Product</a>
+      </li>
+      <li class="item">
+        <div class="dash"></div>
+        <a href="/" class="text">Contact</a>
+      </li>
+    </ul>
+  </body>
+  <script>
+    // 기본값 설정
+    gsap.defaults({ duration: 0.3 });
+
+    $(`ul > li.item`).each(function (i) {
+      const _item = this;
+      const $item = $(this);
+      const $dash = $item.find('.dash');
+      const $text = $item.find('.text');
+      const menuEffect = gsap.timeline({ paused: true });
+
+      menuEffect.to($dash, {
+        x: -5,
+        opacity: 1,
+        backgroundColor: 'yellow',
+      });
+
+      menuEffect.to(
+        $text,
+        {
+          x: 5,
+          opacity: 1,
+          color: 'white',
+        },
+        '<',
+      );
+
+      _item.menuEffect = menuEffect;
+    });
+
+    $(`ul > li.item`).hover(
+      function () {
+        //enter
+        this.menuEffect.play();
+      },
+      function () {
+        //leave
+        this.menuEffect.reverse();
+      },
+    );
+  </script>
+</html>

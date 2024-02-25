@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="ko" class="h-full">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no"
+    />
+    <link rel="icon" href="data:," />
+    <title>07_hover_pulse.html</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  </head>
+  <body class="h-full flex flex-row items-center justify-center gap-[10px]">
+    <div
+      class="Card relative w-[300px] h-[150px] border-solid border-[1px] border-[red] rounded-[10px] overflow-hidden"
+    >
+      <img
+        class="object-cover w-full h-full"
+        src="https://picsum.photos/560/315.jpg?random=1"
+        alt=""
+      />
+      <button
+        class="text-white bg-blue-600 p-[5px_10px] rounded-[5px] z-10 absolute bottom-[10px] right-[10px] text-[#161616] text-[1rem] font-normal"
+      >
+        BUY
+      </button>
+    </div>
+    <div
+      class="Card relative w-[300px] h-[150px] border-solid border-[1px] border-[red] rounded-[10px] overflow-hidden"
+    >
+      <img
+        class="object-cover w-full h-full"
+        src="https://picsum.photos/560/315.jpg?random=2"
+        alt=""
+      />
+      <button
+        class="text-white bg-blue-600 p-[5px_10px] rounded-[5px] z-10 absolute bottom-[10px] right-[10px] text-[#161616] text-[1rem] font-normal"
+      >
+        BUY
+      </button>
+    </div>
+  </body>
+  <script>
+    gsap.defaults({
+      duration: 0.3,
+    });
+
+    const $buyBtnList = $('.Card > button');
+    $buyBtnList.each(function (i) {
+      const pulseEffect = gsap.to(this, {
+        scale: 1.2,
+        repeat: -1,
+        yoyo: true,
+        paused: true,
+      });
+      this.pulseEffect = pulseEffect;
+    });
+
+    $('.Card').hover(
+      function () {
+        //enter
+        const $btn = $(this).find('> button');
+        const pulseEffect = $btn[0].pulseEffect;
+        pulseEffect.restart();
+      },
+      function () {
+        //leave
+        const $btn = $(this).find('> button');
+        const pulseEffect = $btn[0].pulseEffect;
+        pulseEffect.pause();
+        gsap.to($btn, {
+          scale: 1,
+        });
+      },
+    );
+  </script>
+</html>

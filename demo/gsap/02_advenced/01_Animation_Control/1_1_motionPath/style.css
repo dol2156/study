@@ -1,0 +1,51 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+body {
+  background-color: #333;
+}
+
+svg {
+  width: 100vw;
+  /* height: 100vh; */
+}
+
+button {
+  padding: 1rem;
+  cursor: pointer;
+}
+
+.indicator {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  font-size: 2rem;
+  color: white;
+}
+
+.indicator input {
+  margin: 0 1rem;
+}
+
+#button {
+  font-size: 24px;
+  width: 200px;
+}
+
+#time {
+  width:200px;
+}
+#progress {
+  width:200px;
+}
+
+#tiger {
+  outline: 1px dashed red;
+}
+
+g.Location{
+  outline:1px dashed red;
+  cursor:pointer;
+}
