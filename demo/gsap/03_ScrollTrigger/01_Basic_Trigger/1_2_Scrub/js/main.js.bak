@@ -1,0 +1,36 @@
+$(function () {
+  const $textContainer = $(`.demo-text .textContainer`);
+  let targetX;
+
+  const data = {
+    horizontal: null,
+  };
+
+  function onResize() {
+    targetX = -1 * ($textContainer.width() - $(window).width());
+  }
+
+  window.addEventListener('resize', onResize);
+  onResize();
+
+  const tween = gsap.to(data, {
+    horizontal: targetX,
+    onUpdate: function (param) {
+      $textContainer.css('transfrom', `translateX(${targetX}px)`);
+    },
+  });
+
+  ScrollTrigger.create({
+    animation: tween,
+    id: 'section.demo-text',
+    trigger: '.section.demo-text',
+    markers: true,
+    start: '40% center',
+    end: '60% center',
+    // scrub: true,
+    scrub: 1,
+    onScrubComplete: function (param) {
+      console.log(param);
+    },
+  });
+});

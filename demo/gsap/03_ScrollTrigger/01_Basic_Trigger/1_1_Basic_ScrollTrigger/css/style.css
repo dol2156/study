@@ -1,21 +1,21 @@
-
-
-section{
+section {
+  outline: 1px dashed red;
   height: 100vh;
   position: relative;
 }
 
-h2{
+h2 {
+  outline: 1px dashed red;
   font-size: 5vw;
   position: absolute;
   left: 50%;
   top: 50%;
-  transform: translate(-50%,-50%);
+  transform: translate(-50%, -50%);
 }
 
-
-.tigerSection{
-  height:30vh;
-  display:flex;
+.tigerSection {
+  outline: 1px dashed red;
+  height: 30vh;
+  display: flex;
   align-items: center;
 }
