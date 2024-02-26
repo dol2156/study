@@ -1,0 +1,46 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+body {
+  height: 100vh;
+  background: #1d1d1d;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.stage {
+  outline: 1px dashed red;
+  width: 70vw;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  color: #fff;
+  gap: 3vw;
+	/* 부모에서 원근감 줄때 사용 */
+  perspective: 600px;
+}
+
+.stage2 {
+  outline: 1px dashed red;
+  width: 70vw;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  color: #fff;
+  gap: 3vw;
+}
+
+.box {
+  width: 20vw;
+  height: 20vw;
+  max-width: 100px;
+  max-height: 100px;
+  background: dodgerblue;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0px;
+}
