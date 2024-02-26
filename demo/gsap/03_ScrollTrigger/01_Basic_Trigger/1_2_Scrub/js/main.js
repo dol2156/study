@@ -39,8 +39,8 @@ $(function () {
       id: 'section.demo-text',
       trigger: '.section.demo-text',
       markers: true,
-      start: '40% center',
-      end: '60% center',
+      start: '20% center',
+      end: '80% center',
       // scrub: true,
       scrub: 1,
       onScrubComplete: function (param) {
