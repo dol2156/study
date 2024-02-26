@@ -1,5 +1,3 @@
-// GSDevTools.create();
-
 $(function () {
   const $stage = $(`.stage`);
   gsap.to($stage, { autoAlpha: 1 });
