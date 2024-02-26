@@ -11,24 +11,28 @@
 })();
 
 $(function () {
-  const $textContainer = $(`.demo-text .textContainer`);
-  let tween, scrollTrigger;
+  const $textContainerList = $(`.demo-text .textContainer`);
 
-  setupAnimation();
-  window.addEventListener('resize_end', setupAnimation);
+  $textContainerList.each(function (i) {
+    textContainerAnimate(this);
+  });
 
-  function setupAnimation() {
-    if (tween) tween.kill();
-    if (scrollTrigger) scrollTrigger.kill();
+  function textContainerAnimate(text_container) {
+    let tween, scrollTrigger;
+
+    if (text_container.Tween) text_container.Tween.kill();
+    if (text_container.ScrollTrigger) text_container.ScrollTrigger.kill();
+
+    const $demoText = $(text_container).closest('.demo-text');
 
     tween = gsap.fromTo(
-      $textContainer,
+      text_container,
       {
         x: 0,
       },
       {
         x: function () {
-          const targetX = -1 * ($textContainer.width() - $(window).width());
+          const targetX = -1 * ($(text_container).width() - $(window).width());
           return targetX;
         },
       },
@@ -36,9 +40,7 @@ $(function () {
 
     scrollTrigger = ScrollTrigger.create({
       animation: tween,
-      id: 'section.demo-text',
-      trigger: '.section.demo-text',
-      markers: true,
+      trigger: $demoText,
       start: '20% center',
       end: '80% center',
       // scrub: true,
@@ -47,5 +49,40 @@ $(function () {
         // console.log(param);
       },
     });
+
+    text_container.Tween = tween;
+    text_container.ScrollTrigger = scrollTrigger;
+
+    window.addEventListener('resize_end', function (e) {
+      console.log(e);
+      textContainerAnimate(text_container);
+    });
   }
+});
+
+$(function () {
+  const $imageContainer = $(`.demo-image > .imageContainer`);
+
+  let tween;
+  tween = gsap.fromTo(
+    $imageContainer,
+    {
+      x: function () {
+        const targetX = -($($imageContainer).outerWidth() - $(window).width());
+        return targetX;
+      },
+    },
+    {
+      x: 0,
+    },
+  );
+
+  ScrollTrigger.create({
+    markers: true,
+    animation: tween,
+    scrub: 1,
+    start: '20% center',
+    end: '80% center',
+    trigger: $imageContainer,
+  });
 });
