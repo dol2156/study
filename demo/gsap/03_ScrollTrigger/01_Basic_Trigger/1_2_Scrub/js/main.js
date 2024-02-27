@@ -76,7 +76,7 @@ $(function () {
       x: 0,
     },
   );
-
+  
   ScrollTrigger.create({
     markers: true,
     animation: tween,
