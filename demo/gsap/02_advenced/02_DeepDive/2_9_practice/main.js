@@ -1,8 +1,17 @@
 $(function () {
   splt({});
+  textAnimate();
+});
 
+function textAnimate() {
   const $ex_list = $(`.word > .ex`);
   const $imgList = $(`.bg .Img`);
+
+  gsap.set(`.bg .Img`, {
+    opacity: 0,
+    x: '-10%',
+  });
+  
 
   const tl = gsap.timeline({
     repeat: -1,
@@ -40,4 +49,4 @@ $(function () {
       '<',
     );
   });
-});
+}
