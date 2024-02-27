@@ -1,32 +1,32 @@
-body{
+body {
   background-color: #333;
 }
 
-
-.stage{
+.stage {
   width: 90vw;
   height: 350px;
   position: absolute;
   left: 50%;
   top: 50%;
-  transform: translate(-50%,-50%);
-  display:flex;
-  justify-content:center;
+  transform: translate(-50%, -50%);
+  display: flex;
+  justify-content: center;
   align-items: center;
-  gap:2rem;
-
+  gap: 1rem;
+  outline: 1px dashed red;
 }
 
-.stage > div{
+.stage > div {
+  outline: 1px dashed red;
   width: 102px;
-  height: 88px;
+  aspect-ratio: 102/88;
   background-size: cover;
   /* width: 60px;
   height: 52px;
   flex-shrink: 0; */
 }
 
-h1{
+h1 {
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
@@ -34,24 +34,18 @@ h1{
   color: #fff;
   white-space: nowrap;
 }
-.orange{
+.orange {
   background: url(https://simseonbeom.github.io/Final/assets/tiger/orange.png);
 }
 
-
-.green{
+.green {
   background: url(https://simseonbeom.github.io/Final/assets/tiger/green.png);
 }
 
-.blue{
+.blue {
   background: url(https://simseonbeom.github.io/Final/assets/tiger/blue.png);
 }
 
-.pink{
+.pink {
   background: url(https://simseonbeom.github.io/Final/assets/tiger/pink.png);
 }
-
-
-
-
-
