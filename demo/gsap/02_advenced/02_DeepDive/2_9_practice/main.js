@@ -7,11 +7,7 @@ function textAnimate() {
   const $ex_list = $(`.word > .ex`);
   const $imgList = $(`.bg .Img`);
 
-  gsap.set(`.bg .Img`, {
-    opacity: 0,
-    x: '-10%',
-  });
-  
+  gsap.set($ex_list, { opacity: 1 });
 
   const tl = gsap.timeline({
     repeat: -1,

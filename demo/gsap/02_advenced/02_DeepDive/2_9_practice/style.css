@@ -52,7 +52,10 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  height:100%;
+  height: 100%;
+  /**/
+  opacity: 0;
+  transform: translateX(-10%);
 }
 
 .bg img {
@@ -81,8 +84,14 @@ body {
   transform: translate(-50%, -50%);
 }
 
-span.line {
-  -webkit-text-stroke: 1px;
-  -webkit-text-stroke-color: #fff;
-  color: transparent;
+.word {
+  span.line {
+    -webkit-text-stroke: 1px;
+    -webkit-text-stroke-color: #fff;
+    color: transparent;
+  }
+
+  .ex {
+    opacity: 0;
+  }
 }
