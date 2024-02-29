@@ -1,28 +1,26 @@
-body{
+body {
   background: black;
 }
-
-.stage{
+.stage {
   width: 100vw;
   height: 350px;
   position: absolute;
   left: 50%;
   top: 50%;
-  transform: translate(-50%,-50%);
-  display:flex;
-  font-size:3rem;
-  color: #fff;
-  justify-content:center;
-  align-items:center
-
+  transform: translate(-50%, -50%);
+  display: flex;
+  font-size: 3rem;
+  color: #ffffff;
+  justify-content: center;
+  align-items: center;
 }
-.utils{
-  perspective:400px;
+.utils {
+  perspective: 400px;
 }
-
-.utils > div{
+.utils > div {
+  outline: 1px dashed red;
   position: absolute;
   left: 50%;
   top: 50%;
-  transform: translate(-50%,-50%);
+  transform: translate(-50%, -50%);
 }
