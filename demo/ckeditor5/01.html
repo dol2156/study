@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8" />
+    <title>CKEditor</title>
+  </head>
+  <body>
+    <h1>CKEditor</h1>
+    <form action="" method="POST">
+      <textarea name="text" id="editor"></textarea>
+      <p><input type="submit" value="전송" /></p>
+    </form>
+    <script src="https://cdn.ckeditor.com/ckeditor5/34.0.0/classic/ckeditor.js"></script>
+    <script>
+      
+      /* CKEditor 4 초기화 + 플러그인 */
+      
+      CKEDITOR.replace('#editor', {
+        extraPlugins: 'powrmultislider',
+        height: '800px',
+      });
+      CKEDITOR.plugins.addExternal(
+        'powrmultislider',
+        'https://cdn.jsdelivr.net/gh/superpowr/powr_for_ckeditor4/powrmultislider/',
+        'plugin.js',
+      );
+      
+      /* CKEditor 5 초기화 */
+      ClassicEditor.create(document.querySelector('#editor'));
+    </script>
+  </body>
+</html>
